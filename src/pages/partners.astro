@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+
+const partners = [
+  {
+    nome: "SIEMENS",
+    logo: "/siemens.webp",
+    descrizione: "Siemens è un leader globale nella tecnologia e nell'ingegneria, fornendo soluzioni innovative per l'industria."
+  },
+  {
+    nome: "QMATIC",
+    logo: "/qmatic.svg",
+    descrizione: "QMATIC è specializzata in soluzioni di gestione delle code e ottimizzazione dei flussi di lavoro."
+  },
+  {
+    nome: "NEDAP",
+    logo: "/nedap.webp",
+    descrizione: "Nedap offre soluzioni avanzate per la gestione della sicurezza e dell'accesso."
+  },
+  {
+    nome: "IRISYS",
+    logo: "irisys.webp",
+    descrizione: "Irisys è un fornitore leader di soluzioni di monitoraggio e analisi dei dati per il retail."
+  }
+];
+
+const certificazioni = [
+  {
+    nome: "ISO 9001",
+    logo: "/iso.png",
+    descrizione: "Certificazione di qualità per i sistemi di gestione."
+  },
+  {
+    nome: "F-GAS",
+    logo: "/fgas.png",
+    descrizione: "Certificazione per la gestione dei gas fluorurati."
+  }
+];
+---
+
+<Layout title="I nostri partners | Mistral Impianti">
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">I nostri partners</h1>
+    
+    <p class="text-lg text-center max-w-3xl mx-auto mb-12">
+      Mistral Impianti collabora con aziende leader nel settore per garantire 
+      ai propri clienti soluzioni innovative e di alta qualità.
+    </p>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      {partners.map(partner => (
+        <div class="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+          <div class="h-32 flex items-center justify-center mb-4">
+            <div class="w-40 h-28 bg-gray-200 rounded flex items-center justify-center">
+              <img src={partner.logo} alt={partner.nome} class="max-h-full object-contain" /> 
+            </div>
+          </div>
+          <h2 class="text-xl font-semibold mb-3 text-center">{partner.nome}</h2>
+          <p class="text-center">{partner.descrizione}</p>
+        </div>
+      ))}
+    </div>
+
+    <h2 class="text-3xl md:text-4xl font-bold mt-12 mb-8 text-center">Certificazioni</h2>
+    <p class="text-lg text-center max-w-3xl mx-auto mb-12">
+      Le nostre certificazioni attestano il nostro impegno per la qualità e la sicurezza.
+    </p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+      {certificazioni.map(cert => (
+        <div class="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
+          <div class="h-32 flex items-center justify-center mb-4">
+            <div class="w-40 h-28 bg-gray-200 rounded flex items-center justify-center">
+              <img src={cert.logo} alt={cert.nome} class="max-h-full object-contain" /> 
+            </div>
+          </div>
+          <h2 class="text-xl font-semibold mb-3 text-center">{cert.nome}</h2>
+          <p class="text-center">{cert.descrizione}</p>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

@@ -1,0 +1,71 @@
+---
+const navItems = [  
+  { name: 'HOME', href: '/' },
+  { name: 'CONTATTACI', href: '/contatti' },
+  { name: 'PARTNERS', href: '/partners' },
+  { name: 'LAVORI', href: '/lavori' },
+];
+---
+
+<header class="bg-black text-white shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4 py-3">
+    <nav class="flex justify-between items-center">
+      <!-- Logo -->
+      <a href="/" class="text-2xl font-bold">
+        <img src="/logo.jpg" alt="Mistral Impianti Logo" class="h-15 md:h-20 w-auto object-contain rounded-full" />
+      </a>
+      
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-6">
+        {navItems.map(item => (
+          <a 
+            href={item.href} 
+            class="hover:text-gray-300 transition-colors duration-200"
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button" 
+        class="md:hidden text-white focus:outline-none"
+        aria-label="Toggle menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+    
+    <!-- Mobile Menu -->
+    <div 
+      id="mobile-menu" 
+      class="md:hidden hidden mt-4 pb-4"
+    >
+      <div class="flex flex-col space-y-3">
+        {navItems.map(item => (
+          <a 
+            href={item.href} 
+            class="block py-2 hover:text-gray-300 transition-colors duration-200"
+          >
+            {item.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+</script>

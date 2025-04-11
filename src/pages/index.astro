@@ -1,11 +1,41 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import MainLayout from '../layouts/MainLayout.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Mistral Impianti SRL - Home">
+  <!-- Hero Section -->
+  <section class="relative bg-black text-white py-20">
+    <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">MISTRAL IMPIANTI S.R.L.</h1>
+      <p class="text-xl md:text-2xl mb-8">Soluzioni impiantistiche tecnologiche dal 1988</p>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <!-- Placeholder per l'immagine -->
+        <div class="w-full md:w-1/2 mb-8 md:mb-0">
+          <div class="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
+            <img src="/confartigianato.jpg" alt="Placeholder" class="rounded-lg object-cover w-full h-full" />
+          </div>
+        </div>
+        
+        <!-- Testo di presentazione -->
+        <div class="w-full md:w-1/2">
+          <h2 class="text-3xl font-bold mb-6 text-black">La nostra storia</h2>
+          <div class="space-y-4 text-gray-800">
+            <p>La MISTRAL IMPIANTI opera da più di 30 anni nel settore dell'impiantistica tecnologica e speciale, ha iniziato la propria attività nel 1988.</p>
+            
+            <p>Nel 2001 la ditta ha scelto di concentrarsi nel ramo impiantistico ed oggi vantiamo un organico di 12 risorse specializzate tra programmatori ed istallatori con una sede in Cherasco in via Mantoetto, una unità locale in Pocapaglia e una nuova sede sempre in Cherasco operativa da Ottobre 2023.</p>
+            
+            <p>Col passare degli anni, visto l'ottimo livello dei servizi prestati ed il conseguente aumento della quota di mercato acquisita, è maturata la decisione di specializzarsi anche in fornitura e manutenzione di impianti antincendio.</p>
+            
+            <p>In questa evoluzione ed espansione abbiamo comunque gelosamente conservato le nostre radici artigiane, esaltandone la flessibilitá, la disponibilitá e la competenza che rappresentano per noi il punto di forza. Attualmente, grazie al costante impegno nel prestare servizi di alta Qualità e alla collaborazione con le maggiori aziende produttrici, leader nei vari settori, la MISTRAL IMPIANTI può vantare un parco clienti solido e consolidato di carattere non solo nazionale ma mondiale.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>

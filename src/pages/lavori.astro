@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+
+const progetti = [
+  {
+    titolo: "Casa di Cura Città di Bra",
+    cliente: "Casa di Cura Città di Bra",
+    tipologie: [
+      "Impianti antincendio",
+      "Sale operatorie",
+      "Impianti elettrici",
+      "Fibra ottica"
+    ],
+    anno: "2023",
+    descrizione: "Installazione e manutenzione di impianti specializzati per strutture sanitarie.",
+    immagine: "/bra.jpg"
+  },
+  {
+    titolo: "Siemens",
+    cliente: "Siemens",
+    tipologie: [
+      "Manutenzione",
+      "BMS",
+      "TVCC",
+      "Antintrusione",
+      "Impianti antincendio"
+    ],
+    anno: "2022",
+    descrizione: "Collaborazione con Siemens per l'implementazione di soluzioni tecnologiche avanzate.",
+    immagine: "/siemens.jpg"
+  },
+  {
+    titolo: "Amazon",
+    cliente: "Amazon",
+    tipologie: [
+      "Poli logistici in tutta Italia",
+      "Impianti antincendio",
+      "BMS",
+      "Collaudi"
+    ],
+    anno: "2022",
+    descrizione: "Installazione di sistemi complessi per centri logistici in tutta Italia.",
+    immagine: "/Amazon.png"
+  },
+  {
+    titolo: "Abet",
+    cliente: "Abet",
+    tipologie: [
+      "Impianti rivelazione fumi",
+      "Impianti rivelazione gas",
+      "Impianti di evacuazione"
+    ],
+    anno: "2022",
+    descrizione: "Sistemi di sicurezza e rilevazione per ambienti industriali.",
+    immagine: "/abet.png"
+  },
+  {
+    titolo: "Rivoli",
+    cliente: "Rivoli",
+    tipologie: [
+      "Impianti antincendio",
+      "EVAC"
+    ],
+    anno: "2021",
+    descrizione: "Sistemi di sicurezza e evacuazione per edifici pubblici.",
+    immagine: "/rivoli.jpg"
+  },
+  {
+    titolo: "Profilmec",
+    cliente: "Profilmec",
+    tipologie: [
+      "Impianti rivelazione fumi",
+      "Impianti rivelazione gas",
+      "Impianti di evacuazione"
+    ],
+    anno: "2021",
+    descrizione: "Installazione di sistemi di sicurezza per impianti industriali.",
+    immagine: "/profilmec.jpg"
+  },
+  {
+    titolo: "Nedap",
+    cliente: "Nedap",
+    tipologie: [
+      "Impianti antitaccheggio"
+    ],
+    anno: "2020",
+    descrizione: "Soluzioni antitaccheggio per il settore retail.",
+    immagine: "/nedap.jpg"
+  },
+  {
+    titolo: "Riva",
+    cliente: "Riva",
+    tipologie: [
+      "Impianti antincendio"
+    ],
+    anno: "2020",
+    descrizione: "Installazione e manutenzione di impianti antincendio.",
+    immagine: "/riva.jpg"
+  },
+  {
+    titolo: "Qmatic",
+    cliente: "Qmatic",
+    tipologie: [
+      "Impianti eliminacode"
+    ],
+    anno: "2019",
+    descrizione: "Sistemi di gestione code per uffici pubblici e privati.",
+    immagine: "/qmatic.jpg"
+  }
+];
+---
+
+<Layout title="I nostri lavori | Mistral Impianti">
+  <style>
+    .tag {
+      display: inline-block;
+      background-color: #e2f0fd;
+      color: #3182ce;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid #bee3f8;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .card {
+      transition: all 0.3s ease;
+    }
+    
+    .imgCarte {
+      height: 160px;
+      object-fit: contain;
+      padding: 15px;
+    }
+    
+    .tipologie-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+  </style>
+
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">I nostri lavori</h1>
+    
+    <p class="text-lg text-center max-w-3xl mx-auto mb-12">
+      Scopri alcuni dei progetti realizzati da Mistral Impianti negli ultimi anni.
+      La nostra esperienza e competenza al servizio dei clienti.
+    </p>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+      {progetti.map(progetto => (
+        <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card">
+          <div class="card-header bg-white">
+            <img src={progetto.immagine} alt={progetto.titolo} class="imgCarte mx-auto" onerror="this.src='/placeholder-project.jpg'; this.onerror=null;" />
+          </div>
+          <div class="p-6 card-body">
+            <h2 class="text-xl font-semibold mb-2">{progetto.titolo}</h2>
+            <p class="text-sm text-gray-600 mb-3">
+              Cliente: {progetto.cliente} | Anno: {progetto.anno}
+            </p>
+            <p class="mb-2">{progetto.descrizione}</p>
+            
+            <div class="mt-4">
+              <h3 class="text-sm font-medium text-gray-700 mb-2">Tipologia lavori:</h3>
+              <div class="tipologie-container">
+                {progetto.tipologie.map((tipo) => (
+                  <span class="tag">{tipo}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Sezione Mistral Counter -->
+    <section class="py-12 bg-gray-50 rounded-lg mb-16">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6 text-center">Mistral Counter</h2>
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+          <div class="w-full lg:w-1/2">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <iframe 
+                class="w-full h-100"
+                src="https://www.youtube.com/embed/aX08a809238" 
+                title="Mistral Counter Preview" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+          </div>
+          <div class="w-full lg:w-1/2">
+            <h3 class="text-2xl font-semibold mb-4">Innovazione e tecnologia</h3>
+            <p class="mb-6">
+              Il Mistral Counter rappresenta la nostra soluzione all'avanguardia per il monitoraggio e la gestione intelligente degli impianti. 
+              Scopri come questa tecnologia può ottimizzare i consumi e migliorare l'efficienza energetica.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a 
+                href="/pdf/mistral_counter.pdf" 
+                class="inline-flex items-center px-6 py-3 bg-black text-white font-medium rounded-lg shadow hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1"
+                download
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                Scarica la brochure
+              </a>
+              <!-- visualizza sul browser senza scaricare -->
+              <a 
+                href="/pdf/mistral_counter.pdf" 
+                class="inline-flex items-center px-6 py-3 bg-white text-black font-medium rounded-lg shadow border-2 border-black hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1"
+                target="_blank"
+              >
+                Visualizza sul browser
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sezione NEDAP LIGHTING CONTROLS -->
+    <section class="py-12 bg-gray-50 rounded-lg">
+      <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6 text-center">NEDAP LIGHTING CONTROLS</h2>
+        <div class="flex flex-col lg:flex-row items-center gap-8">
+          <div class="w-full lg:w-1/2 order-2 lg:order-1">
+            <p class="mb-6">
+              La MISTRALIMPIANTI si è sperimentata in un nuovo ambito: l'illuminazione intelligente!
+              Grazie ai dispositivi forniti da NEDAP è ora possibile avere un impianto luci intelligente, 
+              con regolazione automatica e risparmio assicurato.
+            </p>
+            <p class="mb-6">
+              I nostri sistemi di illuminazione intelligente permettono di:
+            </p>
+            <ul class="list-disc pl-6 mb-6">
+              <li>Ridurre i consumi energetici</li>
+              <li>Aumentare il comfort degli ambienti</li>
+              <li>Programmare scenari luminosi personalizzati</li>
+              <li>Controllare l'illuminazione da smartphone</li>
+            </ul>
+            <div class="flex flex-wrap gap-4">
+              <a 
+                href="/pdf/luxon.pdf" 
+                class="inline-flex items-center px-6 py-3 bg-black text-white font-medium rounded-lg shadow hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1"
+                download
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                Scarica la documentazione
+              </a>
+              <a 
+                href="/pdf/luxon.pdf" 
+                class="inline-flex items-center px-6 py-3 bg-white text-black font-medium rounded-lg shadow border-2 border-black hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1"
+                target="_blank"
+              >
+                Visualizza sul browser
+              </a>
+            </div>
+          </div>
+          <div class="w-full lg:w-1/2 order-1 lg:order-2">
+            <div class="relative h-64 md:h-80 lg:h-96 rounded-lg overflow-hidden shadow-lg bg-gray-200">
+              <img src="/lighting.jpeg" alt="NEDAP LIGHTING CONTROLS" class="w-full h-full object-cover" onerror="this.src='/placeholder-project.jpg'; this.onerror=null;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
