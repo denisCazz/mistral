@@ -8,9 +8,9 @@ const partners = [
     descrizione: "Siemens è un leader globale nella tecnologia e nell'ingegneria, fornendo soluzioni innovative per l'industria."
   },
   {
-    nome: "QMATIC",
-    logo: "/qmatic.svg",
-    descrizione: "QMATIC è specializzata in soluzioni di gestione delle code e ottimizzazione dei flussi di lavoro."
+    nome: "vanderbilt",
+    logo: "/vanderbilt.avif",
+    descrizione: "Vanderbilt offre soluzioni di sicurezza e gestione degli accessi per una varietà di settori."
   },
   {
     nome: "NEDAP",
@@ -18,9 +18,9 @@ const partners = [
     descrizione: "Nedap offre soluzioni avanzate per la gestione della sicurezza e dell'accesso."
   },
   {
-    nome: "IRISYS",
-    logo: "irisys.webp",
-    descrizione: "Irisys è un fornitore leader di soluzioni di monitoraggio e analisi dei dati per il retail."
+    nome: "IRIS",
+    logo: "iris.webp",
+    descrizione: "RIS, azienda di soluzioni e servizi di IT per tutti i settori industriali."
   }
 ];
 
@@ -28,7 +28,8 @@ const certificazioni = [
   {
     nome: "ISO 9001",
     logo: "/iso.png",
-    descrizione: "Certificazione di qualità per i sistemi di gestione."
+    descrizione: "Certificazione di qualità per i sistemi di gestione.",
+    documento: "/pdf/intercert.pdf" // Aggiungo il percorso al documento scaricabile
   },
   {
     nome: "F-GAS",
@@ -74,7 +75,22 @@ const certificazioni = [
             </div>
           </div>
           <h2 class="text-xl font-semibold mb-3 text-center">{cert.nome}</h2>
-          <p class="text-center">{cert.descrizione}</p>
+          <p class="text-center mb-4">{cert.descrizione}</p>
+          
+          {cert.documento && (
+            <div class="text-center mt-4">
+              <a 
+                href={cert.documento} 
+                download
+                class="inline-flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Scarica certificato
+              </a>
+            </div>
+          )}
         </div>
       ))}
     </div>

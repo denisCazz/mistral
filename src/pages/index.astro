@@ -14,28 +14,176 @@ import MainLayout from '../layouts/MainLayout.astro';
   <!-- About Section -->
   <section class="py-16">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-center gap-12">
-        <!-- Placeholder per l'immagine -->
+      <div class="flex flex-col-reverse md:flex-row items-center gap-12">
+
+        <!-- Doughnut Chart -->
         <div class="w-full md:w-1/2 mb-8 md:mb-0">
-          <div class="bg-gray-200 rounded-lg aspect-video flex items-center justify-center">
-            <img src="/confartigianato.jpg" alt="Placeholder" class="rounded-lg object-cover w-full h-full" />
+          <div class="rounded-lg aspect-video flex flex-col items-center justify-center">
+            <div class="chart-container" style="position: relative; width:100%; max-width:600px; margin:auto;">
+              <canvas id="mistralValuesChart" style="width:100%; height:auto; max-height:480px;"></canvas>
+            </div>
           </div>
         </div>
-        
+
         <!-- Testo di presentazione -->
         <div class="w-full md:w-1/2">
           <h2 class="text-3xl font-bold mb-6 text-black">La nostra storia</h2>
           <div class="space-y-4 text-gray-800">
-            <p>La MISTRAL IMPIANTI opera da più di 30 anni nel settore dell'impiantistica tecnologica e speciale, ha iniziato la propria attività nel 1988.</p>
-            
-            <p>Nel 2001 la ditta ha scelto di concentrarsi nel ramo impiantistico ed oggi vantiamo un organico di 12 risorse specializzate tra programmatori ed istallatori con una sede in Cherasco in via Mantoetto, una unità locale in Pocapaglia e una nuova sede sempre in Cherasco operativa da Ottobre 2023.</p>
-            
-            <p>Col passare degli anni, visto l'ottimo livello dei servizi prestati ed il conseguente aumento della quota di mercato acquisita, è maturata la decisione di specializzarsi anche in fornitura e manutenzione di impianti antincendio.</p>
-            
-            <p>In questa evoluzione ed espansione abbiamo comunque gelosamente conservato le nostre radici artigiane, esaltandone la flessibilitá, la disponibilitá e la competenza che rappresentano per noi il punto di forza. Attualmente, grazie al costante impegno nel prestare servizi di alta Qualità e alla collaborazione con le maggiori aziende produttrici, leader nei vari settori, la MISTRAL IMPIANTI può vantare un parco clienti solido e consolidato di carattere non solo nazionale ma mondiale.</p>
+            <p>
+              <strong>La MISTRAL IMPIANTI Srl</strong> opera da <em>più di 30 anni</em> nel settore dell'impiantistica tecnologica e speciale.<br/>
+              Ha iniziato la propria attività nel <strong>1988</strong>. Nel <strong>2001</strong> la ditta ha scelto di concentrarsi nel ramo impiantistico.
+            </p>
+            <p>
+              Ad oggi vantiamo un organico di <strong>18 risorse</strong>, tra cui tecnici specializzati, programmatori ed installatori.<br/>
+              La nostra nuova sede legale ed operativa è situata in <strong>Via del Lavoro n.17 a Cherasco</strong>, in provincia di Cuneo.<br/>
+              L'azienda è in possesso della <strong>certificazione ISO 9001</strong>.
+            </p>
+            <p>
+              Col passare degli anni, visto l'ottimo livello dei servizi prestati ed il conseguente aumento della quota di mercato acquisita, è maturata la decisione di specializzarsi anche in <strong>fornitura e manutenzione di impianti antincendio</strong>.
+            </p>
+            <p>
+              In questa evoluzione ed espansione abbiamo comunque <em>gelosamente conservato le nostre radici artigiane</em>, esaltandone la <strong>flessibilità</strong>, la <strong>disponibilità</strong> e la <strong>competenza</strong> che rappresentano per noi il punto di forza.
+            </p>
+            <p>
+              Attualmente, grazie al costante impegno nel prestare servizi di <strong>alta qualità</strong> e alla collaborazione con le maggiori aziende produttrici, leader nei vari settori, la Mistral Impianti può vantare un <strong>parco clienti solido</strong> di carattere non solo nazionale, bensì mondiale.
+            </p>
+            <p>
+              La Mistral Impianti è anche <strong>technical partner Siemens</strong>, avendo intrapreso una collaborazione ormai ventennale.
+            </p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Include Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.js"></script>
+  
+  <script>
+    // @ts-ignore: Chart e ChartDataLabels sono globali caricati da CDN
+    declare const Chart: any;
+    // @ts-ignore: ChartDataLabels è globale da CDN
+    interface Window { ChartDataLabels: any }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // @ts-ignore
+      if (window.ChartDataLabels) {
+        // @ts-ignore
+        Chart.register(window.ChartDataLabels);
+      }
+      const canvas = document.getElementById('mistralValuesChart') as HTMLCanvasElement | null;
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      // Qualità chiave per datalabels abbreviate
+      const shortLabels = [
+        'Problem solving',
+        'Flessibilità',
+        'Esperienza',
+        'Personale',
+        'Disponibilità'
+      ];
+
+      const data = {
+        labels: [
+          'Problem solving: professionalità e continuità', 
+          'Flessibilità, collaborazione e competitività',
+          'Esperienza e versatilità in diversi settori',
+          'Personale altamente qualificato',
+          'Pronta disponibilità materiale e ricambi'
+        ],
+        datasets: [{
+          data: [1, 1, 1, 1, 1],
+          backgroundColor: [
+            '#1E293B',
+            '#F59E42',
+            '#10B981',
+            '#6366F1',
+            '#F43F5E'
+          ],
+          borderColor: '#fff',
+          borderWidth: 2,
+          hoverOffset: 18
+        }]
+      };
+
+      const config = {
+        type: 'doughnut',
+        data: data,
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '60%',
+          layout: {
+            padding: 10
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                },
+                color: '#222',
+                padding: 16,
+                boxWidth: 18
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label: function(context: any) {
+                  return context.label;
+                }
+              },
+              backgroundColor: '#222',
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: '#fff',
+              borderWidth: 1,
+              padding: 14,
+              titleFont: {
+                size: 15,
+                weight: 'bold'
+              },
+              bodyFont: {
+                size: 14
+              }
+            },
+            datalabels: {
+              color: '#fff',
+              font: {
+                weight: 'bold',
+                size: 14
+              },
+              formatter: (_: unknown, ctx: { dataIndex: number }) => {
+                return shortLabels[ctx.dataIndex];
+              }
+            }
+          }
+        }
+      };
+
+      function setChartHeight() {
+        const canvas = document.getElementById('mistralValuesChart') as HTMLCanvasElement | null;
+        if (!canvas) return;
+        if (window.innerWidth < 640) {
+          canvas.height = 340;
+        } else {
+          canvas.height = 480;
+        }
+      }
+      setChartHeight();
+
+      const mistralChart = new Chart(ctx, config);
+
+      window.addEventListener('resize', () => {
+        setChartHeight();
+        mistralChart.resize();
+      });
+    });
+  </script>
 </MainLayout>

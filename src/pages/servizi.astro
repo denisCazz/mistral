@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/MainLayout.astro';
+
+const categorie = [
+  {
+    nome: "Programmazione & Manutenzione",
+    icona: "💻",
+    servizi: [
+      {
+        titolo: "Programmazione",
+        descrizione: "6 tecnici programmatori specializzati per la gestione e personalizzazione degli impianti."
+      },
+      {
+        titolo: "Manutenzione preventiva antincendio",
+        descrizione: "Eseguita secondo le normative UNI 9795 e UNI 11224. Al termine di ciascuna visita semestrale vi saranno forniti: rapporto d’intervento, consistenza impianto, registro impianto, memoria evento, foto centrale e batterie, back-up e report di compensazione sporcizia"
+      },
+      {
+        titolo: "Manutenzione antintrusione",
+        descrizione: "Visite di manutenzione su impianti antintrusione e TVCC."
+      }
+    ]
+  },
+  {
+    nome: "Impianti Tecnologici",
+    icona: "⚡",
+    servizi: [
+      { titolo: "Impianti elettrici", descrizione: "" },
+      { titolo: "Impianti speciali", descrizione: "" },
+      { titolo: "Impianti antincendio", descrizione: "Core business aziendale." },
+      { titolo: "Impianti antintrusione", descrizione: "" },
+      { titolo: "Impianti rivelazione gas", descrizione: "" },
+      { titolo: "Impianti spegnimento", descrizione: "" },
+      { titolo: "Impianti ospedalieri", descrizione: "" },
+      { titolo: "Impianti contapersone", descrizione: "" }
+    ]
+  },
+  {
+    nome: "Energia & Comfort",
+    icona: "🌞",
+    servizi: [
+      { titolo: "Fotovoltaico", descrizione: "Impianti per industrie e residenze." },
+      { titolo: "Pompe di calore", descrizione: "Installazione, manutenzione e fornitura di pompe di calore. Rilascio della documentazione per accedere alle detrazioni fiscali ENEA (libretto impianto, dichiarazione di conformità, garanzia, scheda comunicazione vendita ed intervento, data sheet)" },
+      { titolo: "Illuminazione intelligente", descrizione: "Realizzazione impianti luci intelligente con regolazione automatica, il quale garantisce un risparmio assicurato" }
+    ]
+  },
+  {
+    nome: "Analisi & Certificazioni",
+    icona: "🔎",
+    servizi: [
+      { titolo: "Indagine termografica", descrizione: "Offriamo un servizio secondo le normative UNI 10824-1, UNI EN ISO 9712 e ISO 18434-1. Le rilevazioni vengono effettuate da due tecnici abilitati di secondo livello. Grazie alla stipulazione del report conclusivo, si potrà usufruire dell’agevolazione INAIL" },
+      { titolo: "Attestazione e certificazione fibra ottica", descrizione: "" },
+      { titolo: "Quadristica", descrizione: "Realizzazione e manutenzione quadri elettrici." },
+      { titolo: "Sistemi controllo accessi & elimina code", descrizione: "Gestione accessi e code." }
+    ]
+  },
+  {
+    nome: "Fornitura & Ricambi",
+    icona: "🚚",
+    servizi: [
+      { titolo: "Fornitura materiale", descrizione: "Materiale e ricambi sempre disponibili." }
+    ]
+  }
+];
+---
+
+<Layout title="Servizi | Mistral Impianti">
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-6 text-center tracking-tight">I nostri servizi</h1>
+    <p class="text-lg text-center max-w-2xl mx-auto mb-10 text-gray-700">
+      Esperienza, innovazione e professionalità per ogni esigenza impiantistica.
+    </p>
+    <div class="space-y-12">
+      {categorie.map(cat => (
+        <section>
+          <div class="flex items-center mb-6">
+            <span class="text-3xl mr-3">{cat.icona}</span>
+            <h2 class="text-2xl font-semibold tracking-tight">{cat.nome}</span>
+          </div>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {cat.servizi.map(servizio => (
+              <div class="bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-shadow p-6 flex flex-col gap-2 relative">
+                <h3 class="text-lg font-bold mb-1 text-blue-900">{servizio.titolo}</h3>
+                {servizio.descrizione && (
+                  <p class="text-gray-700 text-sm">{servizio.descrizione}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </main>
+</Layout>
