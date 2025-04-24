@@ -39,60 +39,63 @@ const certificazioni = [
 ];
 ---
 
-<Layout title="I nostri partners | Mistral Impianti">
-  <main class="container mx-auto px-4 py-12">
+<Layout title="I nostri partners | Mistral Impianti" description="Scopri i partner e le certificazioni di Mistral Impianti. Collaborazioni con Siemens, Nedap, Vanderbilt e certificazioni di qualità.">
+  <main class="container mx-auto px-4 py-12" aria-label="Partners e Certificazioni">
     <h1 class="text-3xl md:text-4xl font-bold mb-8 text-center">I nostri partners</h1>
-    
     <p class="text-lg text-center max-w-3xl mx-auto mb-12">
       Mistral Impianti collabora con aziende leader nel settore per garantire 
       ai propri clienti soluzioni innovative e di alta qualità.
     </p>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-      {partners.map(partner => (
-        <div class="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-          <div class="h-32 flex items-center justify-center mb-4">
-            <div class="w-40 h-28 bg-gray-200 rounded flex items-center justify-center">
-              <img src={partner.logo} alt={partner.nome} class="max-h-full object-contain" /> 
+    <section aria-labelledby="partners-title">
+      <h2 id="partners-title" class="sr-only">Elenco partners</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {partners.map(partner => (
+          <article class="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow" aria-label={partner.nome}>
+            <div class="h-32 flex items-center justify-center mb-4">
+              <div class="w-40 h-28 bg-gray-200 rounded flex items-center justify-center">
+                <img src={partner.logo} alt={"Logo partner " + partner.nome} class="max-h-full object-contain" loading="lazy" /> 
+              </div>
             </div>
-          </div>
-          <h2 class="text-xl font-semibold mb-3 text-center">{partner.nome}</h2>
-          <p class="text-center">{partner.descrizione}</p>
-        </div>
-      ))}
-    </div>
-
+            <h3 class="text-xl font-semibold mb-3 text-center">{partner.nome}</h3>
+            <p class="text-center">{partner.descrizione}</p>
+          </article>
+        ))}
+      </div>
+    </section>
     <h2 class="text-3xl md:text-4xl font-bold mt-12 mb-8 text-center">Certificazioni</h2>
     <p class="text-lg text-center max-w-3xl mx-auto mb-12">
       Le nostre certificazioni attestano il nostro impegno per la qualità e la sicurezza.
     </p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-      {certificazioni.map(cert => (
-        <div class="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow">
-          <div class="h-32 flex items-center justify-center mb-4">
-            <div class="w-40 h-28 bg-gray-200 rounded flex items-center justify-center">
-              <img src={cert.logo} alt={cert.nome} class="max-h-full object-contain" /> 
+    <section aria-labelledby="certificazioni-title">
+      <h2 id="certificazioni-title" class="sr-only">Elenco certificazioni</h2>
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {certificazioni.map(cert => (
+          <article class="border rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow" aria-label={cert.nome}>
+            <div class="h-32 flex items-center justify-center mb-4">
+              <div class="w-40 h-28 bg-gray-200 rounded flex items-center justify-center">
+                <img src={cert.logo} alt={"Logo certificazione " + cert.nome} class="max-h-full object-contain" loading="lazy" /> 
+              </div>
             </div>
-          </div>
-          <h2 class="text-xl font-semibold mb-3 text-center">{cert.nome}</h2>
-          <p class="text-center mb-4">{cert.descrizione}</p>
-          
-          {cert.documento && (
-            <div class="text-center mt-4">
-              <a 
-                href={cert.documento} 
-                download
-                class="inline-flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Scarica certificato
-              </a>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
+            <h3 class="text-xl font-semibold mb-3 text-center">{cert.nome}</h3>
+            <p class="text-center mb-4">{cert.descrizione}</p>
+            {cert.documento && (
+              <div class="text-center mt-4">
+                <a 
+                  href={cert.documento} 
+                  download
+                  class="inline-flex items-center justify-center px-4 py-2 bg-black text-white rounded-md hover:bg-gray-700 transition-colors"
+                  aria-label={"Scarica certificato " + cert.nome}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Scarica certificato
+                </a>
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
   </main>
 </Layout>

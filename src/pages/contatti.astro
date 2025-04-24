@@ -2,14 +2,14 @@
 import Layout from '../layouts/MainLayout.astro';
 ---
 
-<Layout title="Contatti | Mistral Impianti">
-  <main class="container mx-auto px-4 py-8">
+<Layout title="Contatti | Mistral Impianti" description="Contatta Mistral Impianti: indirizzo, telefono, email, orari e mappa. Azienda leader in impianti tecnologici a Cherasco.">
+  <main class="container mx-auto px-4 py-8" aria-label="Contatti">
     <h1 class="text-3xl font-bold mb-6">Contattaci</h1>
     
     <div class="grid md:grid-cols-2 gap-8">
-      <div>
+      <section aria-labelledby="info-title">
         <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-semibold mb-4">Le Nostre Informazioni</h2>
+          <h2 id="info-title" class="text-2xl font-semibold mb-4">Le Nostre Informazioni</h2>
           
           <div class="space-y-4 mb-6">
             <div class="flex items-start">
@@ -68,11 +68,11 @@ import Layout from '../layouts/MainLayout.astro';
           <p class="mb-2">Lunedì - Venerdì: 8:30 - 12:30 / 14:00 - 18:00</p>
           <p>Sabato - Domenica: Chiuso</p>
         </div>
-      </div>
+      </section>
       
-      <div>
+      <section aria-labelledby="mappa-title">
         <div class="bg-white p-6 rounded-lg shadow-md h-full">
-          <h2 class="text-2xl font-semibold mb-4">Come Raggiungerci</h2>
+          <h2 id="mappa-title" class="text-2xl font-semibold mb-4">Come Raggiungerci</h2>
           <div class="h-[400px] w-full">
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.8436243333126!2d7.8426319!3d44.9789332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d2a19b6b126c19%3A0xf0e61bafea7ed8a7!2sVia%20del%20Lavoro%2C%2017%2C%2012062%20Cherasco%20CN!5e0!3m2!1sit!2sit!4v1656528693897!5m2!1sit!2sit"
@@ -81,11 +81,13 @@ import Layout from '../layouts/MainLayout.astro';
               style="border:0;" 
               allowfullscreen="" 
               loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade">
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mappa sede Mistral Impianti"
+              aria-label="Mappa sede Mistral Impianti">
             </iframe>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   </main>
 </Layout>
