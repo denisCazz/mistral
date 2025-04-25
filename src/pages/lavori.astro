@@ -539,22 +539,54 @@ const progetti = [
     </details>
     
     <!-- Sezione Mistral Counter -->
-    <section class="py-12 bg-gray-50 rounded-lg mb-16">
+    <section class="py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 rounded-2xl shadow-lg mb-16">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-6 text-center">Mistral Counter</h2>
-        <div class="flex flex-col lg:flex-row items-center gap-8">
-          <div class="w-full lg:w-1/2">
-            <div class="rounded-lg overflow-hidden shadow-lg">
-              
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center text-gray-900 tracking-tight">Mistral Counter</h2>
+        <div class="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <div class="w-full md:w-1/2 flex flex-col items-center md:items-start mb-8 md:mb-0">
+            <div class="flex items-center justify-center mb-6">
+              <span class="inline-flex items-center justify-center rounded-full bg-black text-white w-16 h-16 shadow-lg">
+                <!-- Icona contatore/tecnologia -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <rect x="4" y="4" width="16" height="16" rx="4" stroke-width="2"/>
+                  <path d="M8 12h8M12 8v8" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </span>
             </div>
-          </div>
-          <div class="w-full lg:w-1/2">
-            <h3 class="text-2xl font-semibold mb-4">Innovazione e tecnologia</h3>
-            <p class="mb-6">
-              Il Mistral Counter rappresenta la nostra soluzione all'avanguardia per il monitoraggio e la gestione intelligente degli impianti. 
+            <h3 class="text-2xl font-semibold mb-3 text-gray-800 text-center md:text-left">Innovazione e tecnologia</h3>
+            <p class="mb-6 text-gray-600 text-center md:text-left">
+              Il Mistral Counter rappresenta la nostra soluzione all'avanguardia per il monitoraggio e la gestione intelligente degli impianti.<br>
               Scopri come questa tecnologia può ottimizzare i consumi e migliorare l'efficienza energetica.
             </p>
-            <div class="flex flex-wrap gap-4">
+            <ul class="space-y-3 text-gray-700 text-base">
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Monitoraggio in tempo reale dei consumi
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Analisi intelligente dei dati energetici
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Ottimizzazione automatica dei parametri
+              </li>
+              <li class="flex items-center gap-2">
+                <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Interfaccia semplice e intuitiva
+              </li>
+            </ul>
+          </div>
+          <div class="w-full md:w-1/2 flex flex-col items-center">
+            <div class="flex flex-wrap gap-4 justify-center">
               <a 
                 href="/pdf/MistralCounter.pdf" 
                 class="inline-flex items-center px-6 py-3 bg-black text-white font-medium rounded-lg shadow hover:bg-gray-800 transition-all duration-300 transform hover:-translate-y-1"
@@ -565,7 +597,6 @@ const progetti = [
                 </svg>
                 Scarica la brochure
               </a>
-              <!-- visualizza sul browser senza scaricare -->
               <a 
                 href="/pdf/MistralCounter.pdf" 
                 class="inline-flex items-center px-6 py-3 bg-white text-black font-medium rounded-lg shadow border-2 border-black hover:bg-gray-100 transition-all duration-300 transform hover:-translate-y-1"
