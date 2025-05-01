@@ -110,14 +110,14 @@ const progetti = [
     cliente: "ACI Progei",
     tipologie: [],
     descrizione: "",
-    immagine: "/aci.webp"
+    immagine: "/aci.jpg"
   },
   {
     titolo: "Juventus",
     cliente: "Juventus",
     tipologie: [],
     descrizione: "",
-    immagine: "/juve.webp"
+    immagine: "/juve.jpg"
   },
   {
     titolo: "Sinelec",
@@ -145,7 +145,7 @@ const progetti = [
     cliente: "Iris IT",
     tipologie: [],
     descrizione: "",
-    immagine: "/iris.webp"
+    immagine: "/iris.jpg"
   },
   {
     titolo: "Inalpi Arena",
@@ -173,14 +173,14 @@ const progetti = [
     cliente: "Riva",
     tipologie: [],
     descrizione: "",
-    immagine: "/riva.webp"
+    immagine: "/riva.jpg"
   },
   {
     titolo: "Abet Laminati",
     cliente: "Abet Laminati",
     tipologie: [],
     descrizione: "",
-    immagine: "/abet.webp"
+    immagine: "/abet.jpg"
   },
   {
     titolo: "Mondovicino",
@@ -201,14 +201,14 @@ const progetti = [
     cliente: "Stellantis",
     tipologie: [],
     descrizione: "",
-    immagine: "/stellantis.webp"
+    immagine: "/stellantis.jpg"
   },
   {
     titolo: "Bitron",
     cliente: "Bitron",
     tipologie: [],
     descrizione: "",
-    immagine: "/bitron.webp"
+    immagine: "/bitron.jpg"
   },
   {
     titolo: "Levosil",
@@ -229,14 +229,14 @@ const progetti = [
     cliente: "Lavazza",
     tipologie: [],
     descrizione: "",
-    immagine: "/lavazza.webp"
+    immagine: "/lavazza.jpg"
   },
   {
     titolo: "Bulgari",
     cliente: "Bulgari",
     tipologie: [],
     descrizione: "",
-    immagine: "/bulgari.webp"
+    immagine: "/bulgari.jpg"
   },
   {
     titolo: "Starhotels",
@@ -250,7 +250,7 @@ const progetti = [
     cliente: "Luxottica",
     tipologie: [],
     descrizione: "",
-    immagine: "/luxottica.webp"
+    immagine: "/luxottica.jpg"
   },
   {
     titolo: "Seven (7even)",
@@ -271,7 +271,7 @@ const progetti = [
     cliente: "Italdesign",
     tipologie: [],
     descrizione: "",
-    immagine: "/Italdesign.webp"
+    immagine: "/Italdesign.jpg"
   },
   {
     titolo: "Ferrero",
@@ -505,7 +505,7 @@ const progetti = [
         {progetti.map(progetto => (
           <div class="border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow card">
             <div class="card-header bg-white">
-              <img src={progetto.immagine} alt={progetto.titolo} class="imgCarte mx-auto" onerror="this.src='/placeholder-project.jpg'; this.onerror=null;" />
+              <img src={progetto.immagine} alt={progetto.titolo} class="imgCarte mx-auto" />
             </div>
             <div class="p-6 card-body">
               <h2 class="text-xl font-semibold mb-2">{progetto.titolo}</h2>
