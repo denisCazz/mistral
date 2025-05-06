@@ -13,5 +13,5 @@ export default defineConfig({
   },
 
   integrations: [sitemap(), compressor(), robotsTxt()],
-  site: 'https://mistral-blond.vercel.app/',
+  site: 'https://mistralimpianti.it/',
 });

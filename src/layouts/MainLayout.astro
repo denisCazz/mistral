@@ -17,15 +17,18 @@ const { title, description = 'Mistral Impianti SRL - Servizi di impiantistica in
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta itemprop="name" content={title} />
+    <meta itemprop="description" content={description} />
+    <meta itemprop="image" content="/logo.jpg" />
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/logo.ico" />
     <link rel="apple-touch-icon" href="/logo.jpg" />
-    <link rel="canonical" href="https://mistral-blond.vercel.app/" />
+    <link rel="canonical" href="https://mistralimpianti.it/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://mistral-blond.vercel.app/" />
+    <meta property="og:url" content="https://mistralimpianti.it/" />
     <meta property="og:site_name" content="Mistral Impianti SRL" />
     <meta property="og:image" content="/logo.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -37,9 +40,9 @@ const { title, description = 'Mistral Impianti SRL - Servizi di impiantistica in
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"></noscript>
   </head>
-  <body class="flex flex-col min-h-screen bg-white text-black">
+  <body class="flex flex-col min-h-screen bg-white text-black" itemscope itemtype="https://schema.org/WebPage">
     <Navbar />
-    <main class="flex-grow">
+    <main class="flex-grow" itemprop="mainContentOfPage">
       <slot />
     </main>
     <Footer />

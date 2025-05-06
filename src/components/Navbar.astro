@@ -12,7 +12,7 @@ const navItems = [
   <div class="container mx-auto px-4 py-3">
     <nav class="flex justify-between items-center">
       <!-- Logo -->
-      <a href="/" class="text-2xl font-bold">
+      <a href="/" class="text-2xl font-bold" title="Mistral Impianti SRL - Servizi di impiantistica industriale">
         <img src="/logo.jpg" alt="Mistral Impianti Logo" class="h-15 md:h-20 w-auto object-contain rounded-full" />
       </a>
       
@@ -22,6 +22,8 @@ const navItems = [
           <a 
             href={item.href} 
             class="hover:text-gray-300 transition-colors duration-200"
+            title={item.name}
+            aria-label={item.name}
           >
             {item.name}
           </a>
@@ -50,6 +52,8 @@ const navItems = [
           <a 
             href={item.href} 
             class="block py-2 hover:text-gray-300 transition-colors duration-200"
+            title={item.name}
+            aria-label={item.name}
           >
             {item.name}
           </a>
