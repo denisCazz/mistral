@@ -9,6 +9,7 @@ interface Props {
 }
 
 const { title, description = 'Mistral Impianti SRL - Servizi di impiantistica industriale' } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').toString();
 ---
 
 <!DOCTYPE html>
@@ -23,12 +24,15 @@ const { title, description = 'Mistral Impianti SRL - Servizi di impiantistica in
     <title>{title}</title>
     <link rel="icon" type="image/x-icon" href="/logo.ico" />
     <link rel="apple-touch-icon" href="/logo.jpg" />
-    <link rel="canonical" href="https://mistralimpianti.it/" />
+
+    <!-- Canonical URL dinamico -->
+    <link rel="canonical" href={canonicalUrl} />
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="it_IT" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://mistralimpianti.it/" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="Mistral Impianti SRL" />
     <meta property="og:image" content="/logo.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
