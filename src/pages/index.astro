@@ -21,60 +21,144 @@ import MainLayout from '../layouts/MainLayout.astro';
     <meta itemprop="telephone" content="+390119657370" />
     <meta itemprop="email" content="info@mistralimpianti.it" />
   </div>
-  <!-- Hero Section -->
-  <header class="relative bg-black text-white py-20" aria-label="Hero">
-    <div class="container mx-auto px-4 flex flex-col items-center justify-center text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">MISTRAL IMPIANTI S.R.L.</h1>
-      <p class="text-xl md:text-2xl mb-8">Soluzioni impiantistiche tecnologiche dal 1988</p>
+  <header class="relative isolate overflow-hidden bg-black text-white" aria-label="Hero">
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]"></div>
+      <div class="absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full border border-white/10"></div>
+    </div>
+    <div class="relative mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-24 pt-52 md:flex-row md:items-center">
+      <div class="max-w-2xl space-y-8">
+        <p class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/70">Dal 1988</p>
+        <h1 class="text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+          Mistral Impianti S.R.L.
+          <span class="block text-white/70">Soluzioni impiantistiche tecnologiche dal 1988</span>
+        </h1>
+        <p class="max-w-xl text-lg text-white/80">
+          Progettiamo, installiamo e manteniamo impianti elettrici, speciali e antincendio per aziende che richiedono continuità operativa e standard qualitativi elevati.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/servizi" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-black/30 transition hover:bg-white/80" title="Scopri i servizi">
+            Scopri i servizi
+          </a>
+          <a href="/contatti" class="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10" title="Parla con il team">
+            Parla con il team
+          </a>
+        </div>
+      </div>
+      <div class="grid flex-1 gap-6 sm:grid-cols-2">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <p class="text-sm uppercase tracking-[0.2em] text-white/60">Persone</p>
+          <p class="mt-4 text-5xl font-semibold">18<span class="ml-2 text-base font-medium text-white/60">professionisti</span></p>
+          <p class="mt-4 text-sm text-white/70">Tecnici specializzati, programmatori e installatori con formazione continua.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+          <p class="text-sm uppercase tracking-[0.2em] text-white/60">Qualità</p>
+          <p class="mt-4 text-5xl font-semibold">ISO<br /><span class="text-4xl">9001</span></p>
+          <p class="mt-4 text-sm text-white/70">Certificazione del sistema di gestione per garantire processi tracciabili.</p>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:col-span-2">
+          <p class="text-sm uppercase tracking-[0.2em] text-white/60">Partnership</p>
+          <p class="mt-4 text-lg font-semibold text-white">Technical partner Siemens da oltre vent'anni con progetti in Italia e all'estero.</p>
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- About Section -->
-  <section class="py-16" aria-labelledby="storia-title">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col-reverse md:flex-row items-center gap-12">
-
-        <!-- Doughnut Chart -->
-        <div class="w-full md:w-1/2 mb-8 md:mb-0">
-          <div class="rounded-lg aspect-video flex flex-col items-center justify-center">
-            <div class="chart-container" style="position: relative; width:100%; max-width:600px; margin:auto;">
-              <canvas id="mistralValuesChart" style="width:100%; height:auto; max-height:480px;" aria-label="Valori aziendali Mistral" role="img"></canvas>
-            </div>
-          </div>
+  <section class="relative z-10 -mt-16 mb-24 px-4">
+    <div class="mx-auto grid max-w-6xl gap-8 rounded-[2.5rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.8)] md:grid-cols-[1.1fr_0.9fr] md:p-12">
+      <article aria-labelledby="storia-title" class="space-y-6 text-base text-zinc-700">
+        <h2 id="storia-title" class="text-3xl font-semibold text-black">La nostra storia</h2>
+        <p><strong>La MISTRAL IMPIANTI Srl</strong> opera da <em>più di 30 anni</em> nel settore dell'impiantistica tecnologica e speciale. Ha iniziato la propria attività nel <strong>1988</strong>. Nel <strong>2001</strong> la ditta ha scelto di concentrarsi nel ramo impiantistico.</p>
+        <p>Ad oggi vantiamo un organico di <strong>18 risorse</strong>, tra cui tecnici specializzati, programmatori ed installatori. La nostra nuova sede legale ed operativa è situata in <strong>Via del Lavoro n.17 a Cherasco</strong>, in provincia di Cuneo. L'azienda è in possesso della <strong>certificazione ISO 9001</strong>.</p>
+        <p>Col passare degli anni, visto l'ottimo livello dei servizi prestati ed il conseguente aumento della quota di mercato acquisita, è maturata la decisione di specializzarsi anche in <strong>fornitura e manutenzione di impianti antincendio</strong>.</p>
+        <p>In questa evoluzione ed espansione abbiamo comunque <em>gelosamente conservato le nostre radici artigiane</em>, esaltandone la <strong>flessibilità</strong>, la <strong>disponibilità</strong> e la <strong>competenza</strong> che rappresentano per noi il punto di forza.</p>
+        <p>Attualmente, grazie al costante impegno nel prestare servizi di <strong>alta qualità</strong> e alla collaborazione con le maggiori aziende produttrici, leader nei vari settori, la Mistral Impianti può vantare un <strong>parco clienti solido</strong> di carattere non solo nazionale, bensì mondiale.</p>
+        <p>La Mistral Impianti è anche <strong>technical partner Siemens</strong>, avendo intrapreso una collaborazione ormai ventennale.</p>
+      </article>
+      <aside class="space-y-6">
+        <div class="rounded-2xl border border-black/5 bg-black px-6 py-8 text-white">
+          <h3 class="text-sm uppercase tracking-[0.3em] text-white/60">Linea del tempo</h3>
+          <ul class="mt-6 space-y-6 text-sm text-white/80">
+            <li class="flex gap-4">
+              <span class="mt-1 h-2 w-2 rounded-full bg-white"></span>
+              <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-white/60">1988</p>
+                <p class="mt-1 font-medium text-white">Nasce Mistral Impianti nel settore impiantistico tecnologico.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="mt-1 h-2 w-2 rounded-full bg-white"></span>
+              <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-white/60">2001</p>
+                <p class="mt-1 font-medium text-white">Focus dedicato agli impianti tecnologici e speciali.</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <span class="mt-1 h-2 w-2 rounded-full bg-white"></span>
+              <div>
+                <p class="text-xs uppercase tracking-[0.3em] text-white/60">Oggi</p>
+                <p class="mt-1 font-medium text-white">Servizi integrati per clienti nazionali e internazionali.</p>
+              </div>
+            </li>
+          </ul>
         </div>
+        <div class="rounded-2xl border border-black/5 bg-white px-6 py-6 shadow-sm">
+          <h3 class="text-sm uppercase tracking-[0.3em] text-black/60">Punti di forza</h3>
+          <p class="mt-4 text-sm text-zinc-700">Flessibilità, disponibilità e competenza artigiana per rispondere a esigenze complesse.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
 
-        <!-- Testo di presentazione -->
-        <div class="w-full md:w-1/2">
-          <h2 id="storia-title" class="text-3xl font-bold mb-6 text-black">La nostra storia</h2>
-          <div class="space-y-4 text-gray-800">
-            <p>
-              <strong>La MISTRAL IMPIANTI Srl</strong> opera da <em>più di 30 anni</em> nel settore dell'impiantistica tecnologica e speciale.<br/>
-              Ha iniziato la propria attività nel <strong>1988</strong>. Nel <strong>2001</strong> la ditta ha scelto di concentrarsi nel ramo impiantistico.
-            </p>
-            <p>
-              Ad oggi vantiamo un organico di <strong>18 risorse</strong>, tra cui tecnici specializzati, programmatori ed installatori.<br/>
-              La nostra nuova sede legale ed operativa è situata in <strong>Via del Lavoro n.17 a Cherasco</strong>, in provincia di Cuneo.<br/>
-              L'azienda è in possesso della <strong>certificazione ISO 9001</strong>.
-            </p>
-            <p>
-              Col passare degli anni, visto l'ottimo livello dei servizi prestati ed il conseguente aumento della quota di mercato acquisita, è maturata la decisione di specializzarsi anche in <strong>fornitura e manutenzione di impianti antincendio</strong>.
-            </p>
-            <p>
-              In questa evoluzione ed espansione abbiamo comunque <em>gelosamente conservato le nostre radici artigiane</em>, esaltandone la <strong>flessibilità</strong>, la <strong>disponibilità</strong> e la <strong>competenza</strong> che rappresentano per noi il punto di forza.
-            </p>
-            <p>
-              Attualmente, grazie al costante impegno nel prestare servizi di <strong>alta qualità</strong> e alla collaborazione con le maggiori aziende produttrici, leader nei vari settori, la Mistral Impianti può vantare un <strong>parco clienti solido</strong> di carattere non solo nazionale, bensì mondiale.
-            </p>
-            <p>
-              La Mistral Impianti è anche <strong>technical partner Siemens</strong>, avendo intrapreso una collaborazione ormai ventennale.
-            </p>
+  <section class="mb-24 px-4" aria-labelledby="valori-title">
+    <div class="mx-auto max-w-6xl rounded-[2.5rem] border border-black/10 bg-white px-6 py-12 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] md:px-16 md:py-16">
+      <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div class="space-y-6 text-zinc-700">
+          <h2 id="valori-title" class="text-3xl font-semibold text-black">I valori che guidano ogni progetto</h2>
+          <p class="text-sm text-zinc-600">Ogni attività è sostenuta da processi standardizzati e controlli continui per assicurare rapidità di intervento, continuità e affidabilità operativa.</p>
+          <ul class="space-y-4 text-sm">
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-black"></span><span>Problem solving orientato alla professionalità e alla continuità.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-black"></span><span>Flessibilità, collaborazione e competitività su ogni commessa.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-black"></span><span>Esperienza e versatilità maturate in diversi settori industriali.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-black"></span><span>Personale altamente qualificato e formato.</span></li>
+            <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-black"></span><span>Pronta disponibilità di materiali e ricambi.</span></li>
+          </ul>
+        </div>
+        <div class="relative">
+          <div class="rounded-[2rem] border border-black/10 bg-zinc-900 px-6 py-6 shadow-[0_30px_60px_-45px_rgba(0,0,0,0.65)]">
+            <div class="flex items-center justify-between px-2">
+              <p class="text-sm uppercase tracking-[0.3em] text-white/60">Valori</p>
+              <p class="text-xs text-white/40">Distribuzione 1:1</p>
+            </div>
+            <div class="relative mt-6">
+              <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
+                <canvas id="mistralValuesChart" class="h-[320px] w-full" aria-label="Valori aziendali Mistral" role="img"></canvas>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Include Chart.js -->
+  <section class="px-4 pb-24" aria-label="Call to action">
+    <div class="mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-black/10 bg-black text-white">
+      <div class="grid gap-8 px-8 py-14 md:grid-cols-[1.1fr_0.9fr] md:px-16">
+        <div class="space-y-4">
+          <p class="text-xs uppercase tracking-[0.3em] text-white/50">Parliamo del prossimo progetto</p>
+          <h2 class="text-3xl font-semibold">Dal concept alla manutenzione, un unico partner tecnologico.</h2>
+          <p class="text-sm text-white/70">Dalla progettazione alle verifiche periodiche, coordiniamo team multidisciplinari per impianti elettrici, speciali, antincendio e sistemi intelligenti.</p>
+        </div>
+        <div class="flex flex-col justify-end gap-4 md:items-end">
+          <a href="/contatti" class="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm font-semibold text-black shadow-lg shadow-black/30 transition hover:bg-white/80" title="Contattaci">
+            Contattaci ora
+          </a>
+          <p class="text-xs uppercase tracking-[0.3em] text-white/50">Via del Lavoro 17 · Cherasco (CN)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.js"></script>
   
@@ -106,7 +190,7 @@ import MainLayout from '../layouts/MainLayout.astro';
 
       const data = {
         labels: [
-          'Problem solving: professionalità e continuità', 
+          'Problem solving: professionalità e continuità',
           'Flessibilità, collaborazione e competitività',
           'Esperienza e versatilità in diversi settori',
           'Personale altamente qualificato',
@@ -115,13 +199,13 @@ import MainLayout from '../layouts/MainLayout.astro';
         datasets: [{
           data: [1, 1, 1, 1, 1],
           backgroundColor: [
-            '#1E293B',
-            '#F59E42',
-            '#10B981',
-            '#6366F1',
-            '#F43F5E'
+            'rgba(255, 255, 255, 0.95)',
+            'rgba(255, 255, 255, 0.75)',
+            'rgba(255, 255, 255, 0.55)',
+            'rgba(255, 255, 255, 0.4)',
+            'rgba(255, 255, 255, 0.25)'
           ],
-          borderColor: '#fff',
+          borderColor: '#111827',
           borderWidth: 2,
           hoverOffset: 18
         }]
@@ -133,9 +217,9 @@ import MainLayout from '../layouts/MainLayout.astro';
         options: {
           responsive: true,
           maintainAspectRatio: false,
-          cutout: '60%',
+          cutout: '58%',
           layout: {
-            padding: 10
+            padding: 12
           },
           plugins: {
             legend: {
@@ -143,12 +227,12 @@ import MainLayout from '../layouts/MainLayout.astro';
               position: 'bottom',
               labels: {
                 font: {
-                  size: 14,
-                  weight: 'bold'
+                  size: 13,
+                  weight: '600'
                 },
-                color: '#222',
-                padding: 16,
-                boxWidth: 18
+                color: '#0f0f0f',
+                padding: 14,
+                boxWidth: 12
               }
             },
             tooltip: {
@@ -157,25 +241,25 @@ import MainLayout from '../layouts/MainLayout.astro';
                   return context.label;
                 }
               },
-              backgroundColor: '#222',
+              backgroundColor: 'rgba(17, 17, 17, 0.95)',
               titleColor: '#fff',
               bodyColor: '#fff',
               borderColor: '#fff',
               borderWidth: 1,
               padding: 14,
               titleFont: {
-                size: 15,
-                weight: 'bold'
+                size: 14,
+                weight: '600'
               },
               bodyFont: {
-                size: 14
+                size: 13
               }
             },
             datalabels: {
-              color: '#fff',
+              color: '#111827',
               font: {
-                weight: 'bold',
-                size: 14
+                weight: '600',
+                size: 13
               },
               formatter: (_: unknown, ctx: { dataIndex: number }) => {
                 return shortLabels[ctx.dataIndex];
@@ -188,10 +272,10 @@ import MainLayout from '../layouts/MainLayout.astro';
       function setChartHeight() {
         const canvas = document.getElementById('mistralValuesChart') as HTMLCanvasElement | null;
         if (!canvas) return;
-        if (window.innerWidth < 640) {
-          canvas.height = 340;
+        if (window.innerWidth < 768) {
+          canvas.height = 320;
         } else {
-          canvas.height = 480;
+          canvas.height = 420;
         }
       }
       setChartHeight();

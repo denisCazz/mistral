@@ -3,91 +3,93 @@ import Layout from '../layouts/MainLayout.astro';
 ---
 
 <Layout title="Contatti | Mistral Impianti" description="Contatta Mistral Impianti: indirizzo, telefono, email, orari e mappa. Azienda leader in impianti tecnologici a Cherasco.">
-  <main class="container mx-auto px-4 py-8" aria-label="Contatti">
-    <h1 class="text-3xl font-bold mb-6">Contattaci</h1>
-    
-    <div class="grid md:grid-cols-2 gap-8">
-      <section aria-labelledby="info-title">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 id="info-title" class="text-2xl font-semibold mb-4">Le Nostre Informazioni</h2>
-          
-          <div class="space-y-4 mb-6">
-            <div class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
+  <main class="px-4 pb-16" aria-label="Contatti">
+    <section class="relative mx-auto mt-32 max-w-6xl overflow-hidden rounded-[2.5rem] border border-black/10 bg-black text-white">
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]"></div>
+      <div class="relative grid gap-8 px-8 py-16 md:grid-cols-[1.1fr_0.9fr] md:px-16">
+        <div class="space-y-5">
+          <p class="text-xs uppercase tracking-[0.3em] text-white/60">Contatti</p>
+          <h1 class="text-4xl font-semibold leading-tight">Parliamo del tuo prossimo impianto.</h1>
+          <p class="text-sm text-white/70">Team dedicati rispondono rapidamente per sopralluoghi, progettazione e manutenzione programmata.</p>
+          <div class="flex flex-wrap gap-4 text-sm text-white">
+            <a href="tel:0172754010" class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 font-semibold transition hover:bg-white/10" title="Telefono fisso">
+              0172 754010
+            </a>
+            <a href="tel:3281022102" class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 font-semibold transition hover:bg-white/10" title="Telefono mobile">
+              328 1022102
+            </a>
+            <a href="mailto:info@mistralimpianti.it" class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 font-semibold transition hover:bg-white/10" title="Mail">
+              info@mistralimpianti.it
+            </a>
+          </div>
+        </div>
+        <div class="rounded-2xl border border-white/15 bg-white/5 p-6 text-sm text-white/80">
+          <p class="text-xs uppercase tracking-[0.3em] text-white/60">Orari ufficio</p>
+          <p class="mt-4">Lunedì - Venerdì: 8:30 - 12:30 / 14:00 - 18:00</p>
+          <p class="mt-2">Sabato - Domenica: Chiuso</p>
+          <div class="mt-6 space-y-2 text-white">
+            <p class="text-xs uppercase tracking-[0.3em] text-white/60">PEC</p>
+            <p class="font-semibold">mistralimpianti@pec.it</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto mt-16 grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+      <section aria-labelledby="info-title" class="space-y-6">
+        <div class="rounded-[2rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.6)]">
+          <h2 id="info-title" class="text-3xl font-semibold text-black">Le nostre informazioni</h2>
+          <div class="mt-8 space-y-6 text-sm text-zinc-700">
+            <div class="flex gap-4">
+              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">📍</span>
               <div>
-                <h3 class="font-semibold">Indirizzo</h3>
+                <h3 class="font-semibold text-black">Indirizzo</h3>
                 <p>Via del Lavoro 17, Cherasco CN</p>
               </div>
             </div>
-            
-            <div class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
+            <div class="flex gap-4">
+              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">☎️</span>
               <div>
-                <h3 class="font-semibold">Telefono</h3>
-                <a href="tel:0172754010" class="text-blue-600 hover:underline" title="Telefono fisso">0172 754010</a>
+                <h3 class="font-semibold text-black">Telefono</h3>
+                <a href="tel:0172754010" class="font-medium text-black hover:opacity-70" title="Telefono fisso">0172 754010</a>
               </div>
             </div>
-            
-            <div class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
+            <div class="flex gap-4">
+              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">📱</span>
               <div>
-                <h3 class="font-semibold">Cellulare</h3>
-                <a href="tel:3281022102" class="text-blue-600 hover:underline" title="Telefono mobile">328 1022102</a>
+                <h3 class="font-semibold text-black">Cellulare</h3>
+                <a href="tel:3281022102" class="font-medium text-black hover:opacity-70" title="Telefono mobile">328 1022102</a>
               </div>
             </div>
-            
-            <div class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
+            <div class="flex gap-4">
+              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">✉️</span>
               <div>
-                <h3 class="font-semibold">Email</h3>
-                <p><a href="mailto:info@mistralimpianti.it" class="text-blue-600 hover:underline" title="Mail">info@mistralimpianti.it</a></p>
-              </div>
-            </div>
-            
-            <div class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <div>
-                <h3 class="font-semibold">PEC</h3>
-                <p>mistralimpianti@pec.it</p>
+                <h3 class="font-semibold text-black">Email</h3>
+                <a href="mailto:info@mistralimpianti.it" class="font-medium text-black hover:opacity-70" title="Mail">info@mistralimpianti.it</a>
               </div>
             </div>
           </div>
-          
-          <h3 class="text-xl font-semibold mb-3">Orari</h3>
-          <p class="mb-2">Lunedì - Venerdì: 8:30 - 12:30 / 14:00 - 18:00</p>
-          <p>Sabato - Domenica: Chiuso</p>
         </div>
       </section>
-      
-      <section aria-labelledby="mappa-title">
-        <div class="bg-white p-6 rounded-lg shadow-md h-full">
-          <h2 id="mappa-title" class="text-2xl font-semibold mb-4">Come Raggiungerci</h2>
-          <div class="h-[400px] w-full">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.8436243333126!2d7.8426319!3d44.9789332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d2a19b6b126c19%3A0xf0e61bafea7ed8a7!2sVia%20del%20Lavoro%2C%2017%2C%2012062%20Cherasco%20CN!5e0!3m2!1sit!2sit!4v1656528693897!5m2!1sit!2sit"
-              width="100%" 
-              height="100%" 
-              style="border:0;" 
-              allowfullscreen="" 
-              loading="lazy" 
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Mappa sede Mistral Impianti"
-              aria-label="Mappa sede Mistral Impianti">
-            </iframe>
-          </div>
+      <section aria-labelledby="mappa-title" class="rounded-[2rem] border border-black/10 bg-white shadow-[0_40px_80px_-60px_rgba(0,0,0,0.6)]">
+        <div class="flex items-center justify-between border-b border-black/10 px-8 py-6">
+          <h2 id="mappa-title" class="text-3xl font-semibold text-black">Come raggiungerci</h2>
+          <span class="hidden text-xs uppercase tracking-[0.3em] text-zinc-500 md:block">Cherasco · Piemonte</span>
+        </div>
+        <div class="h-[420px] w-full overflow-hidden rounded-b-[2rem]">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2822.8436243333126!2d7.8426319!3d44.9789332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12d2a19b6b126c19%3A0xf0e61bafea7ed8a7!2sVia%20del%20Lavoro%2C%2017%2C%2012062%20Cherasco%20CN!5e0!3m2!1sit!2sit!4v1656528693897!5m2!1sit!2sit"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mappa sede Mistral Impianti"
+            aria-label="Mappa sede Mistral Impianti"
+          ></iframe>
         </div>
       </section>
-    </div>
+    </section>
   </main>
 </Layout>
