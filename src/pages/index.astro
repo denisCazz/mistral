@@ -46,19 +46,31 @@ import MainLayout from '../layouts/MainLayout.astro';
         </div>
       </div>
       <div class="grid flex-1 gap-6 sm:grid-cols-2">
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-          <p class="text-sm uppercase tracking-[0.2em] text-white/60">Persone</p>
-          <p class="mt-4 text-5xl font-semibold">18<span class="ml-2 text-base font-medium text-white/60">professionisti</span></p>
-          <p class="mt-4 text-sm text-white/70">Tecnici specializzati, programmatori e installatori con formazione continua.</p>
+        <div class="group rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-md transition-all hover:border-white/20 hover:bg-white/15 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)]">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl shadow-sm ring-1 ring-white/20">👥</span>
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-white drop-shadow-sm">Persone</p>
+          </div>
+          <div class="flex flex-wrap items-baseline gap-2">
+            <span class="text-5xl font-bold leading-none text-white drop-shadow-md">18</span>
+            <span class="text-lg font-semibold text-white drop-shadow-sm">professionisti</span>
+          </div>
+          <p class="mt-4 text-sm font-semibold leading-relaxed text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Tecnici specializzati, programmatori e installatori con formazione continua.</p>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
-          <p class="text-sm uppercase tracking-[0.2em] text-white/60">Qualità</p>
-          <p class="mt-4 text-5xl font-semibold">ISO<br /><span class="text-4xl">9001</span></p>
-          <p class="mt-4 text-sm text-white/70">Certificazione del sistema di gestione per garantire processi tracciabili.</p>
+        <div class="group rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-md transition-all hover:border-white/20 hover:bg-white/15 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)]">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl shadow-sm ring-1 ring-white/20">🏆</span>
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-white drop-shadow-sm">Qualità</p>
+          </div>
+          <p class="text-5xl font-bold text-white drop-shadow-md">ISO<br /><span class="text-4xl">9001</span></p>
+          <p class="mt-4 text-sm font-semibold leading-relaxed text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Certificazione del sistema di gestione per garantire processi tracciabili.</p>
         </div>
-        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur sm:col-span-2">
-          <p class="text-sm uppercase tracking-[0.2em] text-white/60">Partnership</p>
-          <p class="mt-4 text-lg font-semibold text-white">Technical partner Siemens da oltre vent'anni con progetti in Italia e all'estero.</p>
+        <div class="group rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-md transition-all hover:border-white/20 hover:bg-white/15 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)] sm:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-white/20 text-2xl shadow-sm ring-1 ring-white/20">🤝</span>
+            <p class="text-sm font-bold uppercase tracking-[0.2em] text-white drop-shadow-sm">Partnership</p>
+          </div>
+          <p class="text-lg font-bold leading-relaxed text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">Technical partner Siemens da oltre vent'anni con progetti in Italia e all'estero.</p>
         </div>
       </div>
     </div>
@@ -130,9 +142,10 @@ import MainLayout from '../layouts/MainLayout.astro';
               <p class="text-sm uppercase tracking-[0.3em] text-white/60">Valori</p>
               <p class="text-xs text-white/40">Distribuzione 1:1</p>
             </div>
+            <p class="mt-2 px-2 text-xs font-semibold text-white/80">5 valori</p>
             <div class="relative mt-6">
               <div class="rounded-2xl border border-white/10 bg-black/30 p-4">
-                <canvas id="mistralValuesChart" class="h-[320px] w-full" aria-label="Valori aziendali Mistral" role="img"></canvas>
+                <canvas id="mistralValuesChart" class="h-[280px] w-full sm:h-[320px]" aria-label="Valori aziendali Mistral" role="img"></canvas>
               </div>
             </div>
           </div>
@@ -146,7 +159,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       <div class="grid gap-8 px-8 py-14 md:grid-cols-[1.1fr_0.9fr] md:px-16">
         <div class="space-y-4">
           <p class="text-xs uppercase tracking-[0.3em] text-white/50">Parliamo del prossimo progetto</p>
-          <h2 class="text-3xl font-semibold">Dal concept alla manutenzione, un unico partner tecnologico.</h2>
+          <h2 class="text-3xl font-semibold text-white">Dal concept alla manutenzione, un unico partner tecnologico.</h2>
           <p class="text-sm text-white/70">Dalla progettazione alle verifiche periodiche, coordiniamo team multidisciplinari per impianti elettrici, speciali, antincendio e sistemi intelligenti.</p>
         </div>
         <div class="flex flex-col justify-end gap-4 md:items-end">
@@ -163,10 +176,10 @@ import MainLayout from '../layouts/MainLayout.astro';
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.js"></script>
   
   <script>
-    // @ts-ignore: Chart e ChartDataLabels sono globali caricati da CDN
-    declare const Chart: any;
-    // @ts-ignore: ChartDataLabels è globale da CDN
-    interface Window { ChartDataLabels: any }
+  // @ts-ignore: Chart e ChartDataLabels sono globali caricati da CDN
+  declare const Chart: any;
+  // @ts-ignore: ChartDataLabels è globale da CDN
+  interface Window { ChartDataLabels: any }
 
     document.addEventListener('DOMContentLoaded', () => {
       // @ts-ignore
@@ -174,6 +187,8 @@ import MainLayout from '../layouts/MainLayout.astro';
         // @ts-ignore
         Chart.register(window.ChartDataLabels);
       }
+
+      // Rimosso testo centrale: mostrato ora come label sopra il grafico
       const canvas = document.getElementById('mistralValuesChart') as HTMLCanvasElement | null;
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
@@ -198,94 +213,166 @@ import MainLayout from '../layouts/MainLayout.astro';
         ],
         datasets: [{
           data: [1, 1, 1, 1, 1],
+          // Palette vivida e leggibile su sfondo scuro
           backgroundColor: [
-            'rgba(255, 255, 255, 0.95)',
-            'rgba(255, 255, 255, 0.75)',
-            'rgba(255, 255, 255, 0.55)',
-            'rgba(255, 255, 255, 0.4)',
-            'rgba(255, 255, 255, 0.25)'
+            'rgba(34, 211, 238, 0.9)',   // cyan-400
+            'rgba(167, 139, 250, 0.9)', // violet-400
+            'rgba(245, 158, 11, 0.9)',  // amber-500
+            'rgba(16, 185, 129, 0.9)',  // emerald-500
+            'rgba(244, 63, 94, 0.9)'    // rose-500
           ],
-          borderColor: '#111827',
-          borderWidth: 2,
-          hoverOffset: 18
+          borderColor: 'rgba(255,255,255,0.2)',
+          borderWidth: 1.5,
+          hoverOffset: 12,
+          hoverBorderColor: 'rgba(255,255,255,0.35)'
         }]
       };
 
-      const config = {
-        type: 'doughnut',
-        data: data,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          cutout: '58%',
-          layout: {
-            padding: 12
-          },
-          plugins: {
-            legend: {
-              display: true,
-              position: 'bottom',
-              labels: {
-                font: {
-                  size: 13,
-                  weight: '600'
+      function createConfig(isMobile: boolean) {
+        if (isMobile) {
+          // Mobile: grafico a barre orizzontali per massima leggibilità
+          return {
+            type: 'bar',
+            data,
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              indexAxis: 'y',
+              layout: { padding: { top: 8, right: 8, bottom: 8, left: 8 } },
+              animation: { duration: 500, easing: 'easeOutQuad' },
+              scales: {
+                x: {
+                  display: false,
+                  grid: { display: false },
+                  ticks: { display: false },
+                  border: { display: false }
                 },
-                color: '#0f0f0f',
-                padding: 14,
-                boxWidth: 12
-              }
-            },
-            tooltip: {
-              callbacks: {
-                label: function(context: any) {
-                  return context.label;
+                y: {
+                  display: true,
+                  grid: { color: 'rgba(255,255,255,0.08)', drawBorder: false },
+                  ticks: {
+                    color: '#ffffff',
+                    font: { size: 12, weight: '600' },
+                    callback: (val: any) => shortLabels[val as number] || ''
+                  },
+                  border: { display: false }
                 }
               },
-              backgroundColor: 'rgba(17, 17, 17, 0.95)',
-              titleColor: '#fff',
-              bodyColor: '#fff',
-              borderColor: '#fff',
-              borderWidth: 1,
-              padding: 14,
-              titleFont: {
-                size: 14,
-                weight: '600'
-              },
-              bodyFont: {
-                size: 13
+              plugins: {
+                legend: { display: false },
+                tooltip: {
+                  callbacks: { label: (ctx: any) => ctx.label },
+                  backgroundColor: 'rgba(17, 17, 17, 0.95)',
+                  titleColor: '#fff',
+                  bodyColor: '#fff',
+                  borderColor: '#fff',
+                  borderWidth: 1,
+                  padding: 12,
+                  titleFont: { size: 13, weight: '600' },
+                  bodyFont: { size: 12 }
+                },
+                datalabels: {
+                  display: true,
+                  color: '#ffffff',
+                  backgroundColor: 'rgba(0,0,0,0.55)',
+                  borderRadius: 6,
+                  padding: { top: 3, bottom: 3, left: 6, right: 6 },
+                  anchor: 'end',
+                  align: 'end',
+                  clamp: true,
+                  font: { weight: '700', size: 11 },
+                  formatter: (_: unknown, ctx: { dataIndex: number }) => shortLabels[ctx.dataIndex]
+                }
               }
-            },
-            datalabels: {
-              color: '#111827',
-              font: {
-                weight: '600',
-                size: 13
+            }
+          };
+        }
+        // Desktop/Tablet: doughnut moderno
+        return {
+          type: 'doughnut',
+          data,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '60%',
+            layout: { padding: { top: 12, right: 12, bottom: 12, left: 12 } },
+            animation: { duration: 800, easing: 'easeOutQuart' },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  usePointStyle: true,
+                  pointStyle: 'circle',
+                  font: { size: 13, weight: '600' },
+                  color: '#ffffff',
+                  padding: 14,
+                  boxWidth: 10
+                }
               },
-              formatter: (_: unknown, ctx: { dataIndex: number }) => {
-                return shortLabels[ctx.dataIndex];
+              tooltip: {
+                callbacks: {
+                  label: function(context: any) {
+                    return context.label;
+                  }
+                },
+                backgroundColor: 'rgba(17, 17, 17, 0.95)',
+                titleColor: '#fff',
+                bodyColor: '#fff',
+                borderColor: '#fff',
+                borderWidth: 1,
+                padding: 14,
+                titleFont: { size: 14, weight: '600' },
+                bodyFont: { size: 13 }
+              },
+              datalabels: {
+                color: '#ffffff',
+                backgroundColor: 'rgba(0,0,0,0.55)',
+                borderRadius: 6,
+                padding: { top: 4, bottom: 4, left: 8, right: 8 },
+                offset: 6,
+                anchor: 'end',
+                align: 'end',
+                clamp: true,
+                font: { weight: '700', size: 12 },
+                formatter: (_: unknown, ctx: { dataIndex: number }) => shortLabels[ctx.dataIndex]
               }
             }
           }
-        }
-      };
+        };
+      }
 
       function setChartHeight() {
         const canvas = document.getElementById('mistralValuesChart') as HTMLCanvasElement | null;
         if (!canvas) return;
-        if (window.innerWidth < 768) {
-          canvas.height = 320;
+        if (window.innerWidth < 640) {
+          canvas.height = 320; // più spazio per 5 barre
+        } else if (window.innerWidth < 768) {
+          canvas.height = 360;
         } else {
           canvas.height = 420;
         }
       }
       setChartHeight();
 
-      const mistralChart = new Chart(ctx, config);
+      let lastIsMobile = window.innerWidth < 640;
+      let mistralChart = new Chart(ctx, createConfig(lastIsMobile));
 
-      window.addEventListener('resize', () => {
+      function handleResize() {
         setChartHeight();
-        mistralChart.resize();
-      });
+        const isMobile = window.innerWidth < 640;
+        if (isMobile !== lastIsMobile) {
+          // ricrea il grafico con il nuovo tipo
+          mistralChart.destroy();
+          mistralChart = new Chart(ctx, createConfig(isMobile));
+          lastIsMobile = isMobile;
+        } else {
+          mistralChart.resize();
+          mistralChart.update();
+        }
+      }
+
+      window.addEventListener('resize', handleResize);
     });
   </script>
 </MainLayout>

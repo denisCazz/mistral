@@ -2,13 +2,40 @@
 
 :root {
   color-scheme: light;
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --text-primary: #0f0f0f;
+  --text-secondary: #52525b;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.65);
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --nav-border: rgba(0, 0, 0, 0.08);
+  --nav-shadow: 0 18px 45px -24px rgba(15, 23, 42, 0.15);
+  --nav-hover-bg: rgba(15, 15, 15, 0.05);
+  --panel-bg: rgba(255, 255, 255, 0.97);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a1a1aa;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.9);
+  --nav-bg: rgba(20, 20, 20, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.12);
+  --nav-shadow: 0 25px 60px -30px rgba(0, 0, 0, 0.85);
+  --nav-hover-bg: rgba(255, 255, 255, 0.08);
+  --panel-bg: rgba(24, 24, 24, 0.95);
 }
 
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #f5f5f5;
-  color: #0f0f0f;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   text-rendering: optimizeLegibility;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,4 +58,145 @@ section {
 ::selection {
   background: #111;
   color: #fff;
+}
+
+[data-theme="dark"] ::selection {
+  background: #fff;
+  color: #111;
+}
+
+/* Dark mode utilities - Apply only in dark mode */
+[data-theme="dark"] .bg-white {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .text-black {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .text-zinc-700,
+[data-theme="dark"] .text-zinc-600,
+[data-theme="dark"] .text-zinc-500 {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .border-black\/10,
+[data-theme="dark"] .border-black\/5 {
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .shadow-\[0_40px_80px_-60px_rgba\(0\,0\,0\,0\.8\)\],
+[data-theme="dark"] .shadow-\[0_40px_80px_-60px_rgba\(0\,0\,0\,0\.65\)\],
+[data-theme="dark"] .shadow-\[0_40px_80px_-60px_rgba\(0\,0\,0\,0\.6\)\] {
+  box-shadow: 0 40px 80px -60px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] .bg-black\/5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .border-black\/30 {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.nav-shell {
+  background-color: var(--nav-bg) !important;
+  border: 1px solid var(--nav-border) !important;
+  box-shadow: var(--nav-shadow) !important;
+}
+
+.nav-link {
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-link:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.nav-link.is-active {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .nav-link.is-active {
+  background-color: #f5f5f5;
+  color: #0f0f0f;
+}
+
+.brand-title {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.brand-subtitle {
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.theme-toggle {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--nav-border);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.theme-menu {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--nav-border);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.theme-option {
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.theme-option:hover {
+  background-color: var(--nav-hover-bg);
+}
+
+.theme-option[aria-pressed="true"] {
+  background-color: var(--nav-hover-bg);
+  font-weight: 600;
+  border-radius: 0.75rem;
+}
+
+.theme-option svg {
+  color: inherit;
+  stroke: currentColor;
+  opacity: 1;
+}
+
+/* Ensure light mode has dark text in dropdown */
+:root .theme-option {
+  color: #0f0f0f;
+}
+
+/* Ensure dark mode has light text in dropdown */
+[data-theme="dark"] .theme-option {
+  color: #f5f5f5;
+}
+
+.nav-panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--nav-border);
+  color: var(--text-primary);
+}
+
+.nav-icon-button {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--nav-border);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-icon-button:hover {
+  background-color: var(--nav-hover-bg);
 }

@@ -37,32 +37,32 @@ import Layout from '../layouts/MainLayout.astro';
 
     <section class="mx-auto mt-16 grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
       <section aria-labelledby="info-title" class="space-y-6">
-        <div class="rounded-[2rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.6)]">
+        <div class="group rounded-[2rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] transition-all hover:shadow-[0_40px_80px_-50px_rgba(0,0,0,0.85)]">
           <h2 id="info-title" class="text-3xl font-semibold text-black">Le nostre informazioni</h2>
           <div class="mt-8 space-y-6 text-sm text-zinc-700">
             <div class="flex gap-4">
-              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">📍</span>
+              <span class="mt-1 inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-black/10 bg-black text-xl text-white">📍</span>
               <div>
                 <h3 class="font-semibold text-black">Indirizzo</h3>
                 <p>Via del Lavoro 17, Cherasco CN</p>
               </div>
             </div>
             <div class="flex gap-4">
-              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">☎️</span>
+              <span class="mt-1 inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-black/10 bg-black text-xl text-white">☎️</span>
               <div>
                 <h3 class="font-semibold text-black">Telefono</h3>
                 <a href="tel:0172754010" class="font-medium text-black hover:opacity-70" title="Telefono fisso">0172 754010</a>
               </div>
             </div>
             <div class="flex gap-4">
-              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">📱</span>
+              <span class="mt-1 inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-black/10 bg-black text-xl text-white">📱</span>
               <div>
                 <h3 class="font-semibold text-black">Cellulare</h3>
                 <a href="tel:3281022102" class="font-medium text-black hover:opacity-70" title="Telefono mobile">328 1022102</a>
               </div>
             </div>
             <div class="flex gap-4">
-              <span class="mt-1 inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black text-white">✉️</span>
+              <span class="mt-1 inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-black/10 bg-black text-xl text-white">✉️</span>
               <div>
                 <h3 class="font-semibold text-black">Email</h3>
                 <a href="mailto:info@mistralimpianti.it" class="font-medium text-black hover:opacity-70" title="Mail">info@mistralimpianti.it</a>
@@ -71,10 +71,10 @@ import Layout from '../layouts/MainLayout.astro';
           </div>
         </div>
       </section>
-      <section aria-labelledby="mappa-title" class="rounded-[2rem] border border-black/10 bg-white shadow-[0_40px_80px_-60px_rgba(0,0,0,0.6)]">
+      <section aria-labelledby="mappa-title" class="rounded-[2rem] border border-black/10 bg-white shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] transition-all hover:shadow-[0_40px_80px_-50px_rgba(0,0,0,0.85)]">
         <div class="flex items-center justify-between border-b border-black/10 px-8 py-6">
           <h2 id="mappa-title" class="text-3xl font-semibold text-black">Come raggiungerci</h2>
-          <span class="hidden text-xs uppercase tracking-[0.3em] text-zinc-500 md:block">Cherasco · Piemonte</span>
+          <span class="hidden text-xs font-medium uppercase tracking-[0.3em] text-zinc-500 md:block">Cherasco · Piemonte</span>
         </div>
         <div class="h-[420px] w-full overflow-hidden rounded-b-[2rem]">
           <iframe

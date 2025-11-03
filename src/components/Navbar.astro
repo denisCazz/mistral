@@ -11,18 +11,18 @@ const currentPath = Astro.url.pathname;
 ---
 <header class="pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center px-4">
   <div class="pointer-events-auto w-full max-w-6xl">
-    <nav class="flex items-center justify-between rounded-2xl border border-black/10 bg-white/95 px-5 py-3 shadow-lg shadow-black/5 backdrop-blur">
+    <nav class="nav-shell flex items-center justify-between rounded-2xl px-6 py-4 backdrop-blur transition-colors duration-200" data-theme-aware>
       <a
         href="/"
         class="flex items-center gap-3 text-left"
         title="Mistral Impianti SRL - Servizi di impiantistica industriale"
       >
-        <span class="flex h-12 w-12 items-center justify-center rounded-full bg-black text-white">
+        <span class="flex h-12 w-12 items-center justify-center rounded-full">
           <img src="/logo.jpg" alt="Mistral Impianti Logo" class="h-12 w-12 rounded-full object-cover" loading="lazy" />
         </span>
         <span class="hidden sm:flex flex-col leading-tight">
-          <span class="text-sm uppercase tracking-[0.2em] text-black">Mistral Impianti</span>
-          <span class="text-base font-semibold text-black">Soluzioni impiantistiche tecnologiche</span>
+          <span class="brand-title text-sm uppercase tracking-[0.2em]">Mistral Impianti</span>
+          <span class="brand-subtitle text-base font-semibold">Soluzioni impiantistiche tecnologiche</span>
         </span>
       </a>
 
@@ -32,8 +32,8 @@ const currentPath = Astro.url.pathname;
           return (
             <a
               href={item.href}
-              class={`rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
-                isActive ? 'bg-black text-white' : 'text-black hover:bg-black/5'
+              class={`nav-link rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                isActive ? 'is-active' : ''
               }`}
               aria-current={isActive ? 'page' : undefined}
             >
@@ -43,29 +43,85 @@ const currentPath = Astro.url.pathname;
         })}
       </div>
 
-      <button
-        id="mobile-menu-button"
-        class="lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-white text-black transition-colors hover:bg-black/5"
-        aria-label="Apri il menu"
-        aria-expanded="false"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+      <div class="flex items-center gap-2">
+        <div class="relative">
+          <button
+            id="theme-toggle-btn"
+            class="theme-toggle inline-flex h-10 items-center gap-2 rounded-full px-3 text-sm font-medium"
+            aria-label="Cambia tema"
+          >
+            <svg id="theme-icon" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <span id="theme-label" class="hidden text-sm font-medium sm:inline">Light</span>
+          </button>
+          <div
+            id="theme-menu"
+            class="theme-menu nav-panel absolute right-0 top-full z-50 mt-2 hidden w-40 rounded-2xl p-2 shadow-lg"
+          >
+            <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="light" aria-pressed="false">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+              </svg>
+              Light
+            </button>
+            <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="dark" aria-pressed="false">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+              Dark
+            </button>
+            <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="system" aria-pressed="false">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+              System
+            </button>
+          </div>
+        </div>
+
+        <button
+          id="mobile-menu-button"
+          class="nav-icon-button lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full"
+          aria-label="Apri il menu"
+          aria-expanded="false"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </nav>
 
     <div
       id="mobile-menu"
-      class="mt-4 hidden flex-col gap-2 rounded-2xl border border-black/10 bg-white/95 p-4 text-black shadow-lg shadow-black/5 backdrop-blur lg:hidden"
+      class="nav-panel mt-4 hidden flex-col gap-2 rounded-2xl p-4 shadow-lg shadow-black/5 backdrop-blur lg:hidden"
     >
       {navItems.map((item) => {
         const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
         return (
           <a
             href={item.href}
-            class={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition ${
-              isActive ? 'bg-black text-white' : 'hover:bg-black/5'
+            class={`nav-link flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+              isActive ? 'is-active' : ''
             }`}
             aria-current={isActive ? 'page' : undefined}
           >
@@ -87,6 +143,7 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
+  // Mobile menu
   const button = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
 
@@ -96,4 +153,86 @@ const currentPath = Astro.url.pathname;
       button.setAttribute('aria-expanded', (!isOpen).toString());
     });
   }
+
+  // Theme management
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const themeMenu = document.getElementById('theme-menu');
+  const themeIcon = document.getElementById('theme-icon');
+  const themeLabel = document.getElementById('theme-label');
+  const themeOptions = document.querySelectorAll('.theme-option');
+
+  const themes = {
+    light: {
+      icon: `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`,
+      label: 'Light'
+    },
+    dark: {
+      icon: `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`,
+      label: 'Dark'
+    },
+    system: {
+      icon: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`,
+      label: 'System'
+    }
+  };
+
+  function getSystemTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme: string) {
+    const actualTheme = theme === 'system' ? getSystemTheme() : theme;
+    document.documentElement.setAttribute('data-theme', actualTheme);
+    
+    if (themeIcon && themeLabel) {
+      themeIcon.innerHTML = themes[theme as keyof typeof themes].icon;
+      themeLabel.textContent = themes[theme as keyof typeof themes].label;
+    }
+
+    themeOptions.forEach((option) => {
+      const optionTheme = option.getAttribute('data-theme');
+      option.setAttribute('aria-pressed', optionTheme === theme ? 'true' : 'false');
+    });
+  }
+
+  function setTheme(theme: string) {
+    localStorage.setItem('theme', theme);
+    applyTheme(theme);
+  }
+
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'system';
+  applyTheme(savedTheme);
+
+  // Toggle menu
+  themeToggleBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    themeMenu?.classList.toggle('hidden');
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!themeToggleBtn?.contains(e.target as Node) && !themeMenu?.contains(e.target as Node)) {
+      themeMenu?.classList.add('hidden');
+    }
+  });
+
+  // Theme options
+  themeOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const theme = option.getAttribute('data-theme');
+      if (theme) {
+        setTheme(theme);
+        themeMenu?.classList.add('hidden');
+      }
+    });
+  });
+
+  // Listen for system theme changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'system') {
+      applyTheme('system');
+    }
+  });
 </script>
