@@ -34,7 +34,7 @@ import MainLayout from '../layouts/MainLayout.astro';
       <div class="absolute -left-24 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full border border-white/10"></div>
     </div>
     <div class="relative mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-24 pt-52 md:flex-row md:items-center">
-      <div class="max-w-2xl space-y-8">
+  <div class="max-w-2xl space-y-8" data-animate="fade-up">
         <p class="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/70">Dal 1988</p>
         <h1 class="text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
           Mistral Impianti S.R.L.
@@ -52,7 +52,7 @@ import MainLayout from '../layouts/MainLayout.astro';
           </a>
         </div>
       </div>
-      <div class="grid flex-1 gap-6 sm:grid-cols-2">
+  <div class="grid flex-1 gap-6 sm:grid-cols-2" data-animate="fade-up">
         <div class="group rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur-md transition-all hover:border-white/20 hover:bg-white/15 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.6)]">
           <p class="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-white drop-shadow-sm">Persone</p>
           <div class="flex flex-wrap items-baseline gap-2">
@@ -74,9 +74,9 @@ import MainLayout from '../layouts/MainLayout.astro';
     </div>
   </header>
 
-  <section class="relative z-10 -mt-16 mb-24 px-4">
+  <section class="relative z-10 -mt-16 mb-24 px-4" data-animate="fade-up">
     <div class="mx-auto grid max-w-6xl gap-8 rounded-[2.5rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.8)] md:grid-cols-[1.1fr_0.9fr] md:p-12">
-      <article aria-labelledby="storia-title" class="space-y-6 text-base text-zinc-700">
+  <article aria-labelledby="storia-title" class="space-y-6 text-base text-zinc-700" data-animate="fade-up">
         <h2 id="storia-title" class="text-3xl font-semibold text-black">La nostra storia</h2>
         <p><strong>La MISTRAL IMPIANTI Srl</strong> opera da <em>più di 30 anni</em> nel settore dell'impiantistica tecnologica e speciale. Ha iniziato la propria attività nel <strong>1988</strong>. Nel <strong>2001</strong> la ditta ha scelto di concentrarsi nel ramo impiantistico.</p>
         <p>Ad oggi vantiamo un organico di <strong>18 risorse</strong>, tra cui tecnici specializzati, programmatori ed installatori. La nostra nuova sede legale ed operativa è situata in <strong>Via del Lavoro n.17 a Cherasco</strong>, in provincia di Cuneo. L'azienda è in possesso della <strong>certificazione ISO 9001</strong>.</p>
@@ -85,7 +85,7 @@ import MainLayout from '../layouts/MainLayout.astro';
         <p>Attualmente, grazie al costante impegno nel prestare servizi di <strong>alta qualità</strong> e alla collaborazione con le maggiori aziende produttrici, leader nei vari settori, la Mistral Impianti può vantare un <strong>parco clienti solido</strong> di carattere non solo nazionale, bensì mondiale.</p>
         <p>La Mistral Impianti è anche <strong>technical partner Siemens</strong>, avendo intrapreso una collaborazione ormai ventennale.</p>
       </article>
-      <aside class="space-y-6">
+  <aside class="space-y-6" data-animate="fade-up">
         <div class="rounded-2xl border border-black/5 bg-black px-6 py-8 text-white">
           <h3 class="text-sm uppercase tracking-[0.3em] text-white/60">Linea del tempo</h3>
           <ul class="mt-6 space-y-6 text-sm text-white/80">
@@ -120,10 +120,10 @@ import MainLayout from '../layouts/MainLayout.astro';
     </div>
   </section>
 
-  <section class="mb-24 px-4" aria-labelledby="valori-title">
+  <section class="mb-24 px-4" aria-labelledby="valori-title" data-animate="fade-up">
     <div class="mx-auto max-w-6xl rounded-[2.5rem] border border-black/10 bg-white px-6 py-12 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] md:px-16 md:py-16">
       <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div class="space-y-6 text-zinc-700">
+  <div class="space-y-6 text-zinc-700" data-animate="fade-up">
           <h2 id="valori-title" class="text-3xl font-semibold text-black">I valori che guidano ogni progetto</h2>
           <p class="text-sm text-zinc-600">Ogni attività è sostenuta da processi standardizzati e controlli continui per assicurare rapidità di intervento, continuità e affidabilità operativa.</p>
           <ul class="space-y-4 text-sm">
@@ -134,7 +134,7 @@ import MainLayout from '../layouts/MainLayout.astro';
             <li class="flex gap-3"><span class="mt-1 h-2 w-2 rounded-full bg-black"></span><span>Pronta disponibilità di materiali e ricambi.</span></li>
           </ul>
         </div>
-        <div class="relative">
+  <div class="relative" data-animate="zoom-in">
           <div class="rounded-[2rem] border border-black/10 bg-zinc-900 px-6 py-6 shadow-[0_30px_60px_-45px_rgba(0,0,0,0.65)]">
             <div class="flex items-center justify-between px-2">
               <p class="text-sm uppercase tracking-[0.3em] text-white/60">Valori</p>
@@ -152,7 +152,7 @@ import MainLayout from '../layouts/MainLayout.astro';
     </div>
   </section>
 
-  <section class="px-4 pb-24" aria-label="Call to action">
+  <section class="px-4 pb-24" aria-label="Call to action" data-animate="fade-up">
     <div class="mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] border border-black/10 bg-black text-white">
       <div class="grid gap-8 px-8 py-14 md:grid-cols-[1.1fr_0.9fr] md:px-16">
         <div class="space-y-4">

@@ -31,7 +31,66 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').t
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         const actualTheme = theme === 'system' ? systemTheme : theme;
         document.documentElement.setAttribute('data-theme', actualTheme);
+        document.documentElement.classList.add('js-enabled');
       })();
+    </script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', () => {
+        window.requestAnimationFrame(() => {
+          document.body.classList.add('page-loaded');
+        });
+
+        const animatedElements = Array.from(document.querySelectorAll('[data-animate]'));
+        if (!animatedElements.length) {
+          return;
+        }
+
+        const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const applyVisible = (el) => {
+          el.classList.add('is-visible');
+        };
+
+        if (reduceMotionQuery.matches || typeof window.IntersectionObserver === 'undefined') {
+          animatedElements.forEach(applyVisible);
+          return;
+        }
+
+        let observer;
+
+        const handleReduceMotion = (event) => {
+          if (event.matches) {
+            animatedElements.forEach(applyVisible);
+            if (observer) {
+              observer.disconnect();
+            }
+          }
+        };
+
+        observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            rootMargin: '0px 0px -12% 0px',
+            threshold: 0.18
+          }
+        );
+
+        animatedElements.forEach((el) => {
+          observer.observe(el);
+        });
+
+        if (typeof reduceMotionQuery.addEventListener === 'function') {
+          reduceMotionQuery.addEventListener('change', handleReduceMotion);
+        } else if (typeof reduceMotionQuery.addListener === 'function') {
+          reduceMotionQuery.addListener(handleReduceMotion);
+        }
+      });
     </script>
 
     <!-- Canonical URL dinamico -->
@@ -59,7 +118,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').t
       <span class="global-circle global-circle-2 float-b"></span>
       <span class="global-circle global-circle-3 float-c"></span>
     </div>
-    <div class="relative z-10 flex min-h-screen flex-col">
+    <div class="relative z-10 flex min-h-screen flex-col page-shell">
       <Navbar />
       <main class="flex-grow" itemprop="mainContentOfPage">
         <slot />

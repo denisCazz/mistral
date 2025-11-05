@@ -4,7 +4,7 @@ import Layout from '../layouts/MainLayout.astro';
 
 <Layout title="Contatti | Mistral Impianti" description="Contatta Mistral Impianti: indirizzo, telefono, email, orari e mappa. Azienda leader in impianti tecnologici a Cherasco.">
   <main class="px-4 pb-16" aria-label="Contatti">
-    <section class="relative mx-auto mt-32 max-w-6xl overflow-hidden rounded-[2.5rem] border border-black/10 bg-black text-white">
+  <section class="relative mx-auto mt-32 max-w-6xl overflow-hidden rounded-[2.5rem] border border-black/10 bg-black text-white" data-animate="fade-up">
       <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_60%)]"></div>
       <div class="relative grid gap-8 px-8 py-16 md:grid-cols-[1.1fr_0.9fr] md:px-16">
         <div class="space-y-5">
@@ -35,9 +35,9 @@ import Layout from '../layouts/MainLayout.astro';
       </div>
     </section>
 
-    <section class="mx-auto mt-16 grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+    <section class="mx-auto mt-16 grid max-w-6xl gap-12 lg:grid-cols-[0.8fr_1.2fr]" data-animate="fade-up">
       <section aria-labelledby="info-title" class="space-y-6">
-        <div class="group rounded-[2rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] transition-all hover:shadow-[0_40px_80px_-50px_rgba(0,0,0,0.85)]">
+        <div class="group rounded-[2rem] border border-black/10 bg-white p-8 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] transition-all hover:shadow-[0_40px_80px_-50px_rgba(0,0,0,0.85)]" data-animate="fade-up">
           <h2 id="info-title" class="text-3xl font-semibold text-black">Le nostre informazioni</h2>
           <div class="mt-8 space-y-6 text-sm text-zinc-700">
             <div>
@@ -58,8 +58,8 @@ import Layout from '../layouts/MainLayout.astro';
             </div>
           </div>
         </div>
-      </section>
-      <section aria-labelledby="mappa-title" class="rounded-[2rem] border border-black/10 bg-white shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] transition-all hover:shadow-[0_40px_80px_-50px_rgba(0,0,0,0.85)]">
+    </section>
+    <section aria-labelledby="mappa-title" class="rounded-[2rem] border border-black/10 bg-white shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] transition-all hover:shadow-[0_40px_80px_-50px_rgba(0,0,0,0.85)]" data-animate="zoom-in">
         <div class="flex items-center justify-between border-b border-black/10 px-8 py-6">
           <h2 id="mappa-title" class="text-3xl font-semibold text-black">Come raggiungerci</h2>
           <span class="hidden text-xs font-medium uppercase tracking-[0.3em] text-zinc-500 md:block">Cherasco · Piemonte</span>
