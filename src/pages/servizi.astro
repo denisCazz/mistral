@@ -4,7 +4,6 @@ import Layout from '../layouts/MainLayout.astro';
 const categorie = [
   {
     nome: "Programmazione & Manutenzione",
-    icona: "💻",
     servizi: [
       {
         titolo: "Programmazione",
@@ -22,7 +21,6 @@ const categorie = [
   },
   {
     nome: "Impianti Tecnologici",
-    icona: "⚡",
     servizi: [
       { titolo: "Impianti elettrici", descrizione: "" },
       { titolo: "Impianti speciali", descrizione: "" },
@@ -36,7 +34,6 @@ const categorie = [
   },
   {
     nome: "Energia & Comfort",
-    icona: "🌞",
     servizi: [
       { titolo: "Fotovoltaico", descrizione: "Impianti per industrie e residenze." },
       { titolo: "Pompe di calore", descrizione: "Installazione, manutenzione e fornitura di pompe di calore. Rilascio della documentazione per accedere alle detrazioni fiscali ENEA (libretto impianto, dichiarazione di conformità, garanzia, scheda comunicazione vendita ed intervento, data sheet)" },
@@ -45,7 +42,6 @@ const categorie = [
   },
   {
     nome: "Analisi & Certificazioni",
-    icona: "🔎",
     servizi: [
       { titolo: "Indagine termografica", descrizione: "Offriamo un servizio secondo le normative UNI 10824-1, UNI EN ISO 9712 e ISO 18434-1. Le rilevazioni vengono effettuate da due tecnici abilitati di secondo livello. Grazie alla stipulazione del report conclusivo, si potrà usufruire dell’agevolazione INAIL" },
       { titolo: "Attestazione e certificazione fibra ottica", descrizione: "" },
@@ -55,7 +51,6 @@ const categorie = [
   },
   {
     nome: "Fornitura & Ricambi",
-    icona: "🚚",
     servizi: [
       { titolo: "Fornitura materiale", descrizione: "Materiale e ricambi sempre disponibili." }
     ]
@@ -83,15 +78,12 @@ const categorie = [
     </section>
 
     <section class="mx-auto mt-16 max-w-6xl space-y-16">
-      {categorie.map((cat) => (
+  {categorie.map((cat) => (
         <section aria-labelledby={cat.nome.replace(/\s/g, '-') + '-title'} class="rounded-[2.5rem] border border-black/10 bg-white px-6 py-10 shadow-[0_40px_80px_-60px_rgba(0,0,0,0.65)] md:px-12">
           <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-            <div class="flex items-center gap-4">
-              <span class="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl border border-black/10 bg-black text-2xl text-white" aria-hidden="true">{cat.icona}</span>
-              <div>
-                <h2 id={cat.nome.replace(/\s/g, '-') + '-title'} class="text-3xl font-semibold text-black">{cat.nome}</h2>
-                <p class="mt-2 text-sm text-zinc-600">Soluzioni curate nel dettaglio per supportare impianti critici e infrastrutture complesse.</p>
-              </div>
+            <div>
+              <h2 id={cat.nome.replace(/\s/g, '-') + '-title'} class="text-3xl font-semibold text-black">{cat.nome}</h2>
+              <p class="mt-2 text-sm text-zinc-600">Soluzioni curate nel dettaglio per supportare impianti critici e infrastrutture complesse.</p>
             </div>
             <a href="/contatti" class="inline-flex items-center gap-2 rounded-full border border-black/10 px-4 py-2 text-xs font-medium uppercase tracking-[0.2em] text-black transition hover:bg-black hover:text-white">
               Pianifica una consulenza

@@ -13,6 +13,10 @@
   --nav-shadow: 0 18px 45px -24px rgba(15, 23, 42, 0.15);
   --nav-hover-bg: rgba(15, 15, 15, 0.05);
   --panel-bg: rgba(255, 255, 255, 0.97);
+  --surface-overlay: radial-gradient(circle at 20% 15%, rgba(15, 23, 42, 0.05), transparent 55%), radial-gradient(circle at 80% 0%, rgba(14, 116, 144, 0.05), transparent 65%);
+  --circle-glow-1: rgba(56, 189, 248, 0.28);
+  --circle-glow-2: rgba(139, 92, 246, 0.25);
+  --circle-glow-3: rgba(16, 185, 129, 0.25);
 }
 
 [data-theme="dark"] {
@@ -28,6 +32,10 @@
   --nav-shadow: 0 25px 60px -30px rgba(0, 0, 0, 0.85);
   --nav-hover-bg: rgba(255, 255, 255, 0.08);
   --panel-bg: rgba(24, 24, 24, 0.95);
+  --surface-overlay: radial-gradient(circle at 15% 10%, rgba(255, 255, 255, 0.08), transparent 60%), radial-gradient(circle at 80% -5%, rgba(59, 130, 246, 0.1), transparent 70%);
+  --circle-glow-1: rgba(34, 211, 238, 0.22);
+  --circle-glow-2: rgba(167, 139, 250, 0.22);
+  --circle-glow-3: rgba(74, 222, 128, 0.2);
 }
 
 body {
@@ -199,4 +207,90 @@ section {
 
 .nav-icon-button:hover {
   background-color: var(--nav-hover-bg);
+}
+
+.global-background {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--surface-overlay);
+  transition: background 0.4s ease;
+}
+
+.global-circle {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+.global-circle-1 {
+  top: -18vh;
+  left: -12vw;
+  width: clamp(18rem, 30vw, 30rem);
+  height: clamp(18rem, 30vw, 30rem);
+  background: var(--circle-glow-1);
+}
+
+.global-circle-2 {
+  top: 10vh;
+  right: -14vw;
+  width: clamp(20rem, 32vw, 34rem);
+  height: clamp(20rem, 32vw, 34rem);
+  background: var(--circle-glow-2);
+}
+
+.global-circle-3 {
+  bottom: -22vh;
+  left: 25vw;
+  width: clamp(18rem, 28vw, 28rem);
+  height: clamp(18rem, 28vw, 28rem);
+  background: var(--circle-glow-3);
+}
+
+@media (max-width: 768px) {
+  .global-circle-1 {
+    left: -25vw;
+    top: -10vh;
+  }
+
+  .global-circle-2 {
+    right: -30vw;
+    top: 8vh;
+  }
+
+  .global-circle-3 {
+    left: 10vw;
+    bottom: -28vh;
+  }
+}
+
+@keyframes floatA {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(10px, -18px, 0) scale(1.04); }
+}
+
+@keyframes floatB {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-12px, -10px, 0) scale(1.03); }
+}
+
+@keyframes floatC {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(8px, 16px, 0) scale(1.02); }
+}
+
+.float-a { animation: floatA 12s ease-in-out infinite; }
+.float-b { animation: floatB 14s ease-in-out infinite; }
+.float-c { animation: floatC 11s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .float-a,
+  .float-b,
+  .float-c {
+    animation: none !important;
+  }
 }

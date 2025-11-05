@@ -53,11 +53,18 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').t
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"></noscript>
   </head>
-  <body class="flex flex-col min-h-screen antialiased" itemscope itemtype="https://schema.org/WebPage">
-    <Navbar />
-    <main class="flex-grow" itemprop="mainContentOfPage">
-      <slot />
-    </main>
-    <Footer />
+  <body class="relative min-h-screen antialiased" itemscope itemtype="https://schema.org/WebPage">
+    <div class="global-background" aria-hidden="true">
+      <span class="global-circle global-circle-1 float-a"></span>
+      <span class="global-circle global-circle-2 float-b"></span>
+      <span class="global-circle global-circle-3 float-c"></span>
+    </div>
+    <div class="relative z-10 flex min-h-screen flex-col">
+      <Navbar />
+      <main class="flex-grow" itemprop="mainContentOfPage">
+        <slot />
+      </main>
+      <Footer />
+    </div>
   </body>
 </html>
