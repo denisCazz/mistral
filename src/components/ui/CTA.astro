@@ -1,0 +1,48 @@
+---
+interface Props {
+  lang?: 'it' | 'en';
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  href?: string;
+  buttonText?: string;
+  footer?: string;
+}
+
+const {
+  lang = 'it',
+  eyebrow,
+  title,
+  description,
+  href,
+  buttonText,
+  footer,
+} = Astro.props;
+
+const resolvedEyebrow = eyebrow ?? (lang === 'en' ? "Let's talk about your next project" : 'Parliamo del prossimo progetto');
+const resolvedHref = href ?? (lang === 'en' ? '/en/contatti' : '/contatti');
+const resolvedButtonText = buttonText ?? (lang === 'en' ? 'Contact us now' : 'Contattaci ora');
+---
+
+<section class="section-shell pb-24" aria-label="Call to action" data-animate="fade-up">
+  <div class="cta-block">
+    <div class="cta-block-bg" aria-hidden="true"></div>
+    <div class="cta-block-inner">
+      <div class="space-y-4">
+        <p class="eyebrow eyebrow-light">{resolvedEyebrow}</p>
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
+        {description && <p class="max-w-xl text-base leading-relaxed text-white/80">{description}</p>}
+      </div>
+      <div class="flex flex-col justify-end gap-4 md:items-end">
+        <a href={resolvedHref} class="btn btn-light group">
+          {resolvedButtonText}
+          <svg class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+        {footer && <p class="text-right text-xs uppercase tracking-[0.2em] text-white/70">{footer}</p>}
+        <slot name="footer" />
+      </div>
+    </div>
+  </div>
+</section>

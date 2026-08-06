@@ -1,0 +1,186 @@
+---
+import PageHero from '../ui/PageHero.astro';
+import CTA from '../ui/CTA.astro';
+
+interface Props {
+  lang?: 'it' | 'en';
+}
+
+const { lang = 'it' } = Astro.props;
+const en = lang === 'en';
+const L = en ? '/en' : '';
+
+const categorie = en
+  ? [
+      {
+        nome: 'Programming & Maintenance',
+        servizi: [
+          { titolo: 'Programming', descrizione: '6 specialised programmer technicians for the management and customisation of systems.' },
+          { titolo: 'Preventive fire maintenance', descrizione: 'Carried out in accordance with UNI 9795 and UNI 11224 standards. At the end of each six-monthly visit you will receive: intervention report, system inventory, system register, event log, photos of the control panel and batteries, back-up and dirt-compensation report.' },
+          { titolo: 'Intrusion maintenance', descrizione: 'Maintenance visits on intrusion detection and CCTV systems.' },
+        ],
+      },
+      {
+        nome: 'Technological Systems',
+        servizi: [
+          { titolo: 'Electrical systems', descrizione: '' },
+          { titolo: 'Special systems', descrizione: '' },
+          { titolo: 'Fire-protection systems', descrizione: 'Company core business.' },
+          { titolo: 'Intrusion detection systems', descrizione: '' },
+          { titolo: 'Gas detection systems', descrizione: '' },
+          { titolo: 'Suppression systems', descrizione: '' },
+          { titolo: 'Hospital systems', descrizione: '' },
+          { titolo: 'People-counting systems', descrizione: '' },
+        ],
+      },
+      {
+        nome: 'Energy & Comfort',
+        servizi: [
+          { titolo: 'Photovoltaic', descrizione: 'Systems for industry and residences.' },
+          { titolo: 'Heat pumps', descrizione: 'Installation, maintenance and supply of heat pumps. Issuance of the documentation required to access ENEA tax deductions.' },
+          { titolo: 'Smart lighting', descrizione: 'Intelligent lighting systems with automatic regulation, guaranteeing proven savings.' },
+        ],
+      },
+      {
+        nome: 'Analysis & Certifications',
+        servizi: [
+          { titolo: 'Thermographic survey', descrizione: 'Service according to UNI 10824-1, UNI EN ISO 9712 and ISO 18434-1 with INAIL incentives.' },
+          { titolo: 'Fibre-optic attestation and certification', descrizione: '' },
+          { titolo: 'Switchboards', descrizione: 'Construction and maintenance of electrical switchboards.' },
+          { titolo: 'Access control & queue management', descrizione: 'Access and queue management.' },
+        ],
+      },
+      {
+        nome: 'Supply & Spare Parts',
+        servizi: [
+          { titolo: 'Material supply', descrizione: 'Materials and spare parts always available.' },
+        ],
+      },
+    ]
+  : [
+      {
+        nome: 'Programmazione & Manutenzione',
+        servizi: [
+          { titolo: 'Programmazione', descrizione: '6 tecnici programmatori specializzati per la gestione e personalizzazione degli impianti.' },
+          { titolo: 'Manutenzione preventiva antincendio', descrizione: "Eseguita secondo le normative UNI 9795 e UNI 11224. Al termine di ciascuna visita semestrale vi saranno forniti: rapporto d'intervento, consistenza impianto, registro impianto, memoria evento, foto centrale e batterie, back-up e report di compensazione sporcizia" },
+          { titolo: 'Manutenzione antintrusione', descrizione: 'Visite di manutenzione su impianti antintrusione e TVCC.' },
+        ],
+      },
+      {
+        nome: 'Impianti Tecnologici',
+        servizi: [
+          { titolo: 'Impianti elettrici', descrizione: '' },
+          { titolo: 'Impianti speciali', descrizione: '' },
+          { titolo: 'Impianti antincendio', descrizione: 'Core business aziendale.' },
+          { titolo: 'Impianti antintrusione', descrizione: '' },
+          { titolo: 'Impianti rivelazione gas', descrizione: '' },
+          { titolo: 'Impianti spegnimento', descrizione: '' },
+          { titolo: 'Impianti ospedalieri', descrizione: '' },
+          { titolo: 'Impianti contapersone', descrizione: '' },
+        ],
+      },
+      {
+        nome: 'Energia & Comfort',
+        servizi: [
+          { titolo: 'Fotovoltaico', descrizione: 'Impianti per industrie e residenze.' },
+          { titolo: 'Pompe di calore', descrizione: 'Installazione, manutenzione e fornitura di pompe di calore. Rilascio della documentazione per accedere alle detrazioni fiscali ENEA.' },
+          { titolo: 'Illuminazione intelligente', descrizione: 'Realizzazione impianti luci intelligente con regolazione automatica, il quale garantisce un risparmio assicurato' },
+        ],
+      },
+      {
+        nome: 'Analisi & Certificazioni',
+        servizi: [
+          { titolo: 'Indagine termografica', descrizione: 'Servizio secondo UNI 10824-1, UNI EN ISO 9712 e ISO 18434-1 con agevolazione INAIL.' },
+          { titolo: 'Attestazione e certificazione fibra ottica', descrizione: '' },
+          { titolo: 'Quadristica', descrizione: 'Realizzazione e manutenzione quadri elettrici.' },
+          { titolo: 'Sistemi controllo accessi & elimina code', descrizione: 'Gestione accessi e code.' },
+        ],
+      },
+      {
+        nome: 'Fornitura & Ricambi',
+        servizi: [
+          { titolo: 'Fornitura materiale', descrizione: 'Materiale e ricambi sempre disponibili.' },
+        ],
+      },
+    ];
+
+const t = en
+  ? {
+      heroEyebrow: 'Services',
+      heroTitle: 'Experience, innovation and professionalism for every system requirement.',
+      heroDesc: 'Programming, maintenance, technological systems, renewable energy, analysis and certifications: every project is handled by dedicated teams.',
+      heroImageAlt: 'Technician inspecting an electrical panel',
+      asideTitle: 'End-to-end interventions',
+      asideText: 'Installation, commissioning and scheduled maintenance with ISO 9001 certified staff.',
+      catDesc: 'Detail-oriented solutions supporting critical systems and complex infrastructure.',
+      plan: 'Plan a consultation',
+      bespoke: 'Tailor-made',
+      ctaTitle: 'Have a system to design or maintain?',
+      ctaDesc: 'Contact us for a site survey and personalised consulting on your next intervention.',
+      ctaBtn: 'Request a consultation',
+    }
+  : {
+      heroEyebrow: 'Servizi',
+      heroTitle: 'Esperienza, innovazione e professionalità per ogni esigenza impiantistica.',
+      heroDesc: 'Programmazione, manutenzione, impianti tecnologici, energia rinnovabile, analisi e certificazioni: ogni progetto è seguito da team dedicati.',
+      heroImageAlt: 'Tecnico durante il controllo di un quadro elettrico',
+      asideTitle: 'Interventi end-to-end',
+      asideText: 'Installazione, messa in servizio e manutenzione programmata con personale certificato ISO 9001.',
+      catDesc: 'Soluzioni curate nel dettaglio per supportare impianti critici e infrastrutture complesse.',
+      plan: 'Pianifica consulenza',
+      bespoke: 'Su misura',
+      ctaTitle: 'Hai un impianto da progettare o manutenere?',
+      ctaDesc: 'Contattaci per un sopralluogo e una consulenza personalizzata sul tuo prossimo intervento.',
+      ctaBtn: 'Richiedi consulenza',
+    };
+---
+
+<PageHero
+  eyebrow={t.heroEyebrow}
+  title={t.heroTitle}
+  description={t.heroDesc}
+  image="https://images.unsplash.com/photo-1758101755915-462eddc23f57?auto=format&fit=crop&w=1800&q=82"
+  imageAlt={t.heroImageAlt}
+  imagePosition="center 48%"
+>
+  <div slot="aside" class="hero-aside-card">
+    <p class="hero-aside-title">{t.asideTitle}</p>
+    <p class="mt-3">{t.asideText}</p>
+  </div>
+</PageHero>
+
+<div class="section-shell mt-16 space-y-12 pb-24">
+  {categorie.map((cat, catIndex) => (
+    <section aria-labelledby={`cat-${catIndex}`} class="surface-card overflow-hidden" data-animate="fade-up">
+      <div class="border-b border-black/8 px-6 py-8 sm:px-10 sm:py-10">
+        <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <p class="eyebrow">{en ? 'Category' : 'Categoria'} {String(catIndex + 1).padStart(2, '0')}</p>
+            <h2 id={`cat-${catIndex}`} class="mt-2 text-2xl font-bold tracking-tight sm:text-3xl">{cat.nome}</h2>
+            <p class="mt-2 max-w-xl text-sm text-zinc-600">{t.catDesc}</p>
+          </div>
+          <a href={`${L}/contatti`} class="btn btn-outline shrink-0">{t.plan}</a>
+        </div>
+      </div>
+      <div class="grid gap-4 p-6 sm:grid-cols-2 sm:p-8 lg:grid-cols-3">
+        {cat.servizi.map((servizio, i) => (
+          <article class="service-item group" aria-label={servizio.titolo}>
+            <div>
+              <span class="text-xs font-bold text-zinc-400">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="mt-2 text-lg font-bold tracking-tight">{servizio.titolo}</h3>
+              {servizio.descrizione && (
+                <p class="mt-3 text-sm leading-relaxed text-zinc-600">{servizio.descrizione}</p>
+              )}
+            </div>
+            <div class="mt-6 flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-zinc-400">
+              <span>{t.bespoke}</span>
+              <span class="flex h-8 w-8 items-center justify-center rounded-lg border border-black/10 transition group-hover:bg-zinc-950 group-hover:text-white">→</span>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</div>
+
+<CTA lang={lang} title={t.ctaTitle} description={t.ctaDesc} buttonText={t.ctaBtn} />

@@ -1,0 +1,325 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import CTA from '../ui/CTA.astro';
+
+interface Props {
+  lang?: 'it' | 'en';
+}
+
+const { lang = 'it' } = Astro.props;
+const L = lang === 'en' ? '/en' : '';
+const en = lang === 'en';
+
+const t = en
+  ? {
+      kicker: 'Technological systems since 1988',
+      h1a: 'Energy, safety',
+      h1b: 'and control.',
+      lead: 'We design and maintain reliable infrastructure for companies, industry and the service sector. One single partner, from design to after-sales service.',
+      cta1: 'Explore solutions',
+      cta2: 'Discuss your project',
+      photo: 'Photo:',
+      stats: [
+        { label: 'People', value: '21', detail: 'Specialised technicians, programmers and installers.' },
+        { label: '2025 revenue', value: '€ 2.7M', detail: 'Growth built on quality, expertise and continuity.' },
+        { label: 'Experience', value: '38 years', detail: 'Technological systems for businesses since 1988.' },
+      ],
+      growthEyebrow: 'Growth',
+      growthTitle: 'Three years, one clear direction.',
+      growthDesc: 'Revenue and profit show steady growth, supported by investment in people and skills.',
+      growthLink: 'Company data',
+      revenue: 'Revenue',
+      revenueTitle: 'Annual revenue',
+      revenueAria: 'Revenue: 1.9 million in 2023, 2.20 million in 2024, 2.74 million in 2025',
+      profit: 'Profit',
+      profitTitle: 'Net result',
+      profitAria: 'Profit: 517 thousand euro in 2023, 665 thousand euro in 2024, 781 thousand euro in 2025',
+      dataNote: '2023 figures are indicative. Financial data provided by the company.',
+      servEyebrow: 'What we do',
+      servTitle: 'Technology that works for your business.',
+      servDesc: 'Integrated expertise to design, build and maintain critical systems.',
+      servLink: 'All services',
+      services: [
+        { title: 'Electrical systems', text: 'Design and installation for industry and commercial facilities.' },
+        { title: 'Fire protection', text: 'Detection, suppression and certified maintenance.' },
+        { title: 'Automation', text: 'Programming and integration of smart systems.' },
+        { title: 'HVAC', text: 'Comfort, efficiency and environmental control.' },
+        { title: 'Photovoltaic', text: 'Energy production for businesses and homes.' },
+        { title: 'Maintenance', text: 'Operational continuity and scheduled interventions.' },
+      ],
+      more: 'Learn more',
+      certEyebrow: 'Certified standards',
+      certTitle: 'Provable quality.<br />Verifiable safety.',
+      certDesc: 'Controlled processes, qualified staff and continuous training. Certifications are not a badge: they are our way of working.',
+      certBtn1: 'View ISO 9001',
+      certBtn2: 'All certifications',
+      certs: [
+        { img: '/iso.png', alt: 'ISO 9001 certification', strong: 'ISO 9001', span: 'Quality management system' },
+        { img: '/fgas.png', alt: 'F-GAS certification', strong: 'F-GAS', span: 'Certified staff and company' },
+        { img: '/siemens.jpg', alt: 'Siemens technical partner', strong: 'Siemens', span: 'Technical partner for over 20 years' },
+      ],
+      teaserEyebrow: 'Mistral Impianti',
+      teaserTitle: 'Craft roots.<br />Industrial scale.',
+      teaserDesc: 'From Cherasco we work for national and international clients. A 21-person team combines field experience, programming and after-sales service.',
+      teaserLink: 'Discover the company',
+      ctaTitle: 'From concept to maintenance, one single technology partner.',
+      ctaDesc: 'From design to periodic inspections, we coordinate multidisciplinary teams for electrical, special, fire-protection and smart systems.',
+      address: 'Via del Lavoro 17 · Cherasco (CN), Italy',
+    }
+  : {
+      kicker: 'Impianti tecnologici dal 1988',
+      h1a: 'Energia, sicurezza',
+      h1b: 'e controllo.',
+      lead: "Progettiamo e manteniamo infrastrutture affidabili per aziende, industria e terziario. Un solo partner, dalla progettazione all'assistenza.",
+      cta1: 'Scopri le soluzioni',
+      cta2: 'Parliamo del progetto',
+      photo: 'Foto:',
+      stats: [
+        { label: 'Persone', value: '21', detail: 'Tecnici, programmatori e installatori specializzati.' },
+        { label: 'Fatturato 2025', value: '€ 2,7M', detail: 'Crescita costruita su qualità, competenza e continuità.' },
+        { label: 'Esperienza', value: '38 anni', detail: 'Impianti tecnologici per aziende dal 1988.' },
+      ],
+      growthEyebrow: 'Crescita',
+      growthTitle: 'Tre anni, una direzione chiara.',
+      growthDesc: 'Fatturato e utile mostrano una crescita costante, sostenuta da investimenti nelle persone e nelle competenze.',
+      growthLink: 'Dati aziendali',
+      revenue: 'Fatturato',
+      revenueTitle: 'Ricavi annuali',
+      revenueAria: 'Fatturato: 1,9 milioni nel 2023, 2,20 milioni nel 2024, 2,74 milioni nel 2025',
+      profit: 'Utile',
+      profitTitle: "Risultato d'esercizio",
+      profitAria: 'Utile: 517 mila euro nel 2023, 665 mila euro nel 2024, 781 mila euro nel 2025',
+      dataNote: 'Valori 2023 indicativi. Dati economici forniti dal committente.',
+      servEyebrow: 'Cosa facciamo',
+      servTitle: 'Tecnologia che lavora per il tuo business.',
+      servDesc: 'Competenze integrate per progettare, realizzare e mantenere impianti critici.',
+      servLink: 'Tutti i servizi',
+      services: [
+        { title: 'Impianti elettrici', text: 'Progettazione e installazione per industria e terziario.' },
+        { title: 'Sistemi antincendio', text: 'Rilevazione, spegnimento e manutenzione certificata.' },
+        { title: 'Automazione', text: 'Programmazione e integrazione di sistemi intelligenti.' },
+        { title: 'Climatizzazione', text: 'Comfort, efficienza e controllo degli ambienti.' },
+        { title: 'Fotovoltaico', text: 'Produzione energetica per aziende e abitazioni.' },
+        { title: 'Manutenzione', text: 'Continuità operativa e interventi programmati.' },
+      ],
+      more: 'Approfondisci',
+      certEyebrow: 'Standard certificati',
+      certTitle: 'Qualità dimostrabile.<br />Sicurezza verificabile.',
+      certDesc: 'Processi controllati, personale qualificato e aggiornamento continuo. Le certificazioni non sono un bollino: sono il nostro metodo di lavoro.',
+      certBtn1: 'Visualizza ISO 9001',
+      certBtn2: 'Tutte le certificazioni',
+      certs: [
+        { img: '/iso.png', alt: 'Certificazione ISO 9001', strong: 'ISO 9001', span: 'Sistema gestione qualità' },
+        { img: '/fgas.png', alt: 'Certificazione F-GAS', strong: 'F-GAS', span: 'Personale e impresa certificati' },
+        { img: '/siemens.jpg', alt: 'Siemens technical partner', strong: 'Siemens', span: 'Technical partner da oltre 20 anni' },
+      ],
+      teaserEyebrow: 'Mistral Impianti',
+      teaserTitle: 'Radici artigiane.<br />Scala industriale.',
+      teaserDesc: 'Da Cherasco lavoriamo per clienti nazionali e internazionali. Un team di 21 persone unisce esperienza sul campo, programmazione e assistenza.',
+      teaserLink: "Scopri l'azienda",
+      ctaTitle: 'Dal concept alla manutenzione, un unico partner tecnologico.',
+      ctaDesc: "Dalla progettazione alle verifiche periodiche, coordiniamo team multidisciplinari per impianti elettrici, speciali, antincendio e sistemi intelligenti.",
+      address: 'Via del Lavoro 17 · Cherasco (CN)',
+    };
+
+const serviceIcons = [
+  'M13 10V3L4 14h7v7l9-11h-7z',
+  'M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0020 13a7.975 7.975 0 01-2.343 5.657z',
+  'M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4',
+  'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z',
+  'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z',
+  'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 01-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
+];
+
+const financialSeries = [
+  { year: '2023', revenue: '€ 1,9M', revenueHeight: 69, profit: '€ 517K', profitHeight: 66 },
+  { year: '2024', revenue: '€ 2,20M', revenueHeight: 80, profit: '€ 665K', profitHeight: 85 },
+  { year: '2025', revenue: '€ 2,74M', revenueHeight: 100, profit: '€ 781K', profitHeight: 100 },
+];
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Mistral Impianti S.R.L.',
+  url: 'https://mistralimpianti.it/',
+  logo: 'https://mistralimpianti.it/logo.jpg',
+  description: en
+    ? 'Mistral Impianti S.R.L. delivers innovative, tailor-made solutions for electrical, special, HVAC, fire-protection systems and refurbishments.'
+    : 'Mistral Impianti S.R.L. offre soluzioni innovative e personalizzate per impianti elettrici, speciali, climatizzazione, antincendio e ristrutturazioni.',
+  telephone: '+390172754010',
+  email: 'info@mistralimpianti.it',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Via del Lavoro 17',
+    addressLocality: 'Cherasco',
+    postalCode: '12062',
+    addressRegion: 'CN',
+    addressCountry: 'IT',
+  },
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+<header class="industrial-hero" aria-label={en ? 'Introduction' : 'Presentazione'}>
+  <img
+    class="industrial-hero-image"
+    src="https://images.unsplash.com/photo-1780034766226-6c2c62772512?auto=format&fit=crop&w=2000&q=85"
+    alt={en ? 'Technician working on an industrial control panel' : 'Tecnico al lavoro su un pannello di controllo industriale'}
+    fetchpriority="high"
+  />
+  <div class="industrial-hero-overlay" aria-hidden="true"></div>
+  <div class="industrial-hero-content">
+    <div class="hero-kicker"><span></span> {t.kicker}</div>
+    <h1>{t.h1a}<br />{t.h1b}</h1>
+    <p>{t.lead}</p>
+    <div class="flex flex-wrap gap-3">
+      <a href={`${L}/servizi`} class="btn btn-primary group">
+        {t.cta1}
+        <svg class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+      </a>
+      <a href={`${L}/contatti`} class="btn hero-btn-outline">{t.cta2}</a>
+    </div>
+  </div>
+  <p class="stock-credit">
+    {t.photo} <a href="https://unsplash.com/photos/rVTIsDcQaq4" target="_blank" rel="noopener">Raymond Sime / Unsplash</a>
+  </p>
+</header>
+
+<!-- Stats -->
+<section class="section-shell -mt-10 mb-24 relative z-20" aria-label={en ? 'Key figures' : 'Numeri chiave'} data-animate="fade-up">
+  <div class="home-metrics">
+    {t.stats.map((stat) => (
+      <div>
+        <p class="stat-value">{stat.value}</p>
+        <p class="stat-label">{stat.label}</p>
+        <p class="stat-detail">{stat.detail}</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section class="section-shell mb-24" aria-labelledby="growth-title" data-animate="fade-up">
+  <SectionHeader
+    eyebrow={t.growthEyebrow}
+    title={t.growthTitle}
+    description={t.growthDesc}
+    href={`${L}/azienda#bilanci-title`}
+    linkText={t.growthLink}
+  />
+  <div class="business-charts">
+    <article class="business-chart" aria-labelledby="revenue-chart-title">
+      <div class="chart-heading">
+        <div>
+          <p class="eyebrow">{t.revenue}</p>
+          <h3 id="revenue-chart-title">{t.revenueTitle}</h3>
+        </div>
+        <span class="chart-growth">+44%</span>
+      </div>
+      <div class="bar-chart" role="img" aria-label={t.revenueAria}>
+        <div class="chart-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        {financialSeries.map((item) => (
+          <div class="chart-column">
+            <span class="chart-value">{item.revenue}</span>
+            <div class="chart-bar revenue-bar" style={`height: ${item.revenueHeight * 2}px`}></div>
+            <span class="chart-year">{item.year}</span>
+          </div>
+        ))}
+      </div>
+    </article>
+
+    <article class="business-chart" aria-labelledby="profit-chart-title">
+      <div class="chart-heading">
+        <div>
+          <p class="eyebrow">{t.profit}</p>
+          <h3 id="profit-chart-title">{t.profitTitle}</h3>
+        </div>
+        <span class="chart-growth">+51%</span>
+      </div>
+      <div class="bar-chart" role="img" aria-label={t.profitAria}>
+        <div class="chart-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        {financialSeries.map((item) => (
+          <div class="chart-column">
+            <span class="chart-value">{item.profit}</span>
+            <div class="chart-bar profit-bar" style={`height: ${item.profitHeight * 2}px`}></div>
+            <span class="chart-year">{item.year}</span>
+          </div>
+        ))}
+      </div>
+    </article>
+  </div>
+  <p class="data-note">{t.dataNote}</p>
+</section>
+
+<!-- Servizi -->
+<section class="section-shell mb-24" aria-labelledby="servizi-title" data-animate="fade-up">
+  <SectionHeader
+    eyebrow={t.servEyebrow}
+    title={t.servTitle}
+    description={t.servDesc}
+    href={`${L}/servizi`}
+    linkText={t.servLink}
+  />
+  <div class="services-modern-grid">
+    {t.services.map((service, i) => (
+      <a href={`${L}/servizi`} class="service-modern-card group">
+        <span class="service-modern-icon">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d={serviceIcons[i]} />
+          </svg>
+        </span>
+        <h3>{service.title}</h3>
+        <p>{service.text}</p>
+        <span class="service-arrow">{t.more} <span>↗</span></span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<section class="section-shell mb-24" aria-labelledby="cert-title" data-animate="fade-up">
+  <div class="cert-showcase">
+    <div class="cert-copy">
+      <p class="eyebrow eyebrow-light">{t.certEyebrow}</p>
+      <h2 id="cert-title" set:html={t.certTitle}></h2>
+      <p>{t.certDesc}</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href="/pdf/intercert_v2.pdf" target="_blank" rel="noopener" class="btn btn-light">{t.certBtn1}</a>
+        <a href={`${L}/partners#certificazioni-title`} class="btn btn-secondary">{t.certBtn2}</a>
+      </div>
+    </div>
+    <div class="cert-cards">
+      {t.certs.map((cert) => (
+        <article>
+          <img src={cert.img} alt={cert.alt} loading="lazy" />
+          <div><strong>{cert.strong}</strong><span>{cert.span}</span></div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section-shell mb-24" data-animate="fade-up">
+  <div class="company-teaser">
+    <img
+      src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?auto=format&fit=crop&w=1400&q=82"
+      alt={en ? 'Technician inspecting an electrical panel' : 'Tecnico che verifica un quadro elettrico'}
+      loading="lazy"
+    />
+    <div>
+      <p class="eyebrow">{t.teaserEyebrow}</p>
+      <h2 set:html={t.teaserTitle}></h2>
+      <p>{t.teaserDesc}</p>
+      <a href={`${L}/azienda`} class="section-link mt-6">{t.teaserLink} <span>→</span></a>
+    </div>
+    <p class="stock-credit stock-credit-dark">
+      {t.photo} <a href="https://unsplash.com/photos/PkHf7BUWbtk" target="_blank" rel="noopener">Unsplash</a>
+    </p>
+  </div>
+</section>
+
+<CTA lang={lang} title={t.ctaTitle} description={t.ctaDesc}>
+  <div slot="footer" class="text-right">
+    <p class="text-xs uppercase tracking-[0.2em] text-white/70">{t.address}</p>
+    <a href="tel:0172754010" class="mt-2 inline-block text-base font-semibold tracking-normal text-white transition hover:text-white/85">0172 754010</a>
+  </div>
+</CTA>

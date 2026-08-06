@@ -14,4 +14,12 @@ export default defineConfig({
 
   integrations: [sitemap(), compressor(), robotsTxt()],
   site: 'https://mistralimpianti.it/',
+  i18n: {
+    defaultLocale: 'it',
+    locales: ['it', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: false,
+    },
+  },
 });

@@ -1,0 +1,194 @@
+---
+import CTA from '../ui/CTA.astro';
+
+interface Props {
+  lang?: 'it' | 'en';
+}
+
+const { lang = 'it' } = Astro.props;
+const en = lang === 'en';
+const L = en ? '/en' : '';
+
+const bilanci = [
+  { anno: '2025', fatturato: '€ 2.735.399', utile: '€ 781.341', crescita: '+24,5%' },
+  { anno: '2024', fatturato: '€ 2.196.706', utile: '€ 664.901', crescita: '+15,6%' },
+  { anno: '2023', fatturato: en ? 'approx. € 1.9M' : 'circa € 1,9M', utile: '€ 517.100', crescita: '—' },
+];
+
+const t = en
+  ? {
+      kicker: 'The company',
+      h1a: 'Technical expertise.',
+      h1b: 'Concrete growth.',
+      lead: 'Since 1988 we have turned complex requirements into reliable systems. We keep a craftsman-like agility, an industrial method and direct responsibility on every project.',
+      profileEyebrow: 'Profile',
+      profileTitle: 'A team built in the field.',
+      profile: [
+        'Mistral Impianti S.R.L. operates in the installation and maintenance of electrical, lighting, photovoltaic, special and fire-protection systems.',
+        'Its registered and operational head office is at <strong>Via del Lavoro 17, Cherasco (CN)</strong>. Today the team counts <strong>21 people</strong>, including specialised technicians, programmers and installers.',
+        'The twenty-year collaboration as a <strong>Siemens technical partner</strong> and the <strong>ISO 9001</strong> certification demonstrate continuity, quality and the ability to work on complex contracts.',
+      ],
+      solidEyebrow: 'Solidity',
+      solidTitle: 'Growing numbers.',
+      solidDesc: 'Economic performance over the last three financial years.',
+      lastYear: 'Latest financial year',
+      revenue: 'Revenue',
+      profit: 'Profit',
+      growth: 'Growth',
+      dataNote: 'Financial data provided by the company. 2023 figures are indicative.',
+      evoEyebrow: 'Our evolution',
+      evoTitle: 'Experience that becomes method.',
+      tappe: [
+        { anno: '1988', titolo: 'Mistral Impianti is founded', testo: 'The company takes its first steps in the technological systems sector.' },
+        { anno: '2001', titolo: 'Specialisation', testo: 'The focus shifts to technological and special systems for businesses.' },
+        { anno: 'Today', titolo: '21 professionals', testo: 'Technicians, programmers and installers serve clients in Italy and abroad.' },
+      ],
+      qualEyebrow: 'Qualifications',
+      qualTitle: 'Certifications and partnerships.',
+      qualLink: 'Discover our partners',
+      certs: [
+        { img: '/iso.png', alt: 'ISO 9001', titolo: 'ISO 9001', testo: 'Quality management system with controlled, traceable processes.' },
+        { img: '/fgas.png', alt: 'F-GAS', titolo: 'F-GAS', testo: 'Certification for the installation, maintenance and management of fluorinated gases.' },
+        { img: '/siemens.jpg', alt: 'Siemens', titolo: 'Siemens partner', testo: 'A technical collaboration established for over twenty years.' },
+      ],
+      ctaTitle: 'Looking for a solid technical partner?',
+      ctaDesc: 'Let’s discuss your next system, from design to maintenance.',
+    }
+  : {
+      kicker: "L'azienda",
+      h1a: 'Competenza tecnica.',
+      h1b: 'Crescita concreta.',
+      lead: "Dal 1988 trasformiamo esigenze complesse in impianti affidabili. Manteniamo agilità artigiana, metodo industriale e responsabilità diretta su ogni progetto.",
+      profileEyebrow: 'Profilo',
+      profileTitle: 'Una squadra costruita sul campo.',
+      profile: [
+        'Mistral Impianti S.R.L. opera nell’installazione e manutenzione di impianti elettrici, di illuminazione, fotovoltaici, speciali e antincendio.',
+        'La sede legale e operativa è in <strong>Via del Lavoro 17, Cherasco (CN)</strong>. Oggi il team conta <strong>21 persone</strong> tra tecnici specializzati, programmatori e installatori.',
+        'La collaborazione ventennale come <strong>technical partner Siemens</strong> e la certificazione <strong>ISO 9001</strong> testimoniano continuità, qualità e capacità di lavorare su commesse complesse.',
+      ],
+      solidEyebrow: 'Solidità',
+      solidTitle: 'Numeri in crescita.',
+      solidDesc: 'Andamento economico degli ultimi tre esercizi.',
+      lastYear: 'Ultimo esercizio',
+      revenue: 'Fatturato',
+      profit: 'Utile',
+      growth: 'Crescita',
+      dataNote: 'Dati economici forniti dal committente. Valori 2023 indicativi.',
+      evoEyebrow: 'La nostra evoluzione',
+      evoTitle: 'Esperienza che diventa metodo.',
+      tappe: [
+        { anno: '1988', titolo: 'Nasce Mistral Impianti', testo: 'L’azienda muove i primi passi nel settore dell’impiantistica tecnologica.' },
+        { anno: '2001', titolo: 'Specializzazione', testo: 'Il focus si concentra sugli impianti tecnologici e speciali per aziende.' },
+        { anno: 'Oggi', titolo: '21 professionisti', testo: 'Tecnici, programmatori e installatori seguono clienti in Italia e all’estero.' },
+      ],
+      qualEyebrow: 'Qualifiche',
+      qualTitle: 'Certificazioni e partnership.',
+      qualLink: 'Scopri i partner',
+      certs: [
+        { img: '/iso.png', alt: 'ISO 9001', titolo: 'ISO 9001', testo: 'Sistema di gestione per la qualità con processi controllati e tracciabili.' },
+        { img: '/fgas.png', alt: 'F-GAS', titolo: 'F-GAS', testo: 'Certificazione per installazione, manutenzione e gestione dei gas fluorurati.' },
+        { img: '/siemens.jpg', alt: 'Siemens', titolo: 'Siemens partner', testo: 'Collaborazione tecnica consolidata da oltre vent’anni.' },
+      ],
+      ctaTitle: 'Cerchi un partner tecnico solido?',
+      ctaDesc: 'Confrontiamoci sul prossimo impianto, dalla progettazione alla manutenzione.',
+    };
+---
+
+<header class="company-hero company-hero-photo">
+  <img
+    src="https://images.unsplash.com/photo-1755407454675-454d6ed4c1bc?auto=format&fit=crop&w=2000&q=82"
+    alt={en ? 'Control technology for industrial systems' : 'Tecnologia di controllo per impianti industriali'}
+    loading="eager"
+  />
+  <div class="company-hero-overlay" aria-hidden="true"></div>
+  <div class="company-hero-inner">
+    <p class="hero-kicker"><span></span> {t.kicker}</p>
+    <h1>{t.h1a}<br />{t.h1b}</h1>
+    <p>{t.lead}</p>
+  </div>
+</header>
+
+<section class="section-shell company-intro" data-animate="fade-up">
+  <div>
+    <p class="eyebrow">{t.profileEyebrow}</p>
+    <h2>{t.profileTitle}</h2>
+  </div>
+  <div class="prose-clear">
+    {t.profile.map((p) => (
+      <p set:html={p}></p>
+    ))}
+  </div>
+</section>
+
+<section class="section-shell mb-24" aria-labelledby="bilanci-title" data-animate="fade-up">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">{t.solidEyebrow}</p>
+      <h2 id="bilanci-title" class="section-title">{t.solidTitle}</h2>
+      <p class="section-desc">{t.solidDesc}</p>
+    </div>
+  </div>
+  <div class="financial-grid">
+    {bilanci.map((bilancio, index) => (
+      <article class:list={['financial-card', index === 0 && 'is-current']}>
+        <div class="financial-year">
+          <span>{bilancio.anno}</span>
+          {index === 0 && <small>{t.lastYear}</small>}
+        </div>
+        <div>
+          <span class="financial-label">{t.revenue}</span>
+          <strong>{bilancio.fatturato}</strong>
+        </div>
+        <div>
+          <span class="financial-label">{t.profit}</span>
+          <strong>{bilancio.utile}</strong>
+        </div>
+        <div class="financial-growth">
+          <span class="financial-label">{t.growth}</span>
+          <strong>{bilancio.crescita}</strong>
+        </div>
+      </article>
+    ))}
+  </div>
+  <p class="data-note">{t.dataNote}</p>
+</section>
+
+<section class="company-band" data-animate="fade-up">
+  <div class="section-shell company-band-grid">
+    <div>
+      <p class="eyebrow eyebrow-light">{t.evoEyebrow}</p>
+      <h2>{t.evoTitle}</h2>
+    </div>
+    <ol class="company-timeline">
+      {t.tappe.map((tappa) => (
+        <li>
+          <span>{tappa.anno}</span>
+          <div>
+            <h3>{tappa.titolo}</h3>
+            <p>{tappa.testo}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<section class="section-shell my-24" aria-labelledby="certificazioni-azienda" data-animate="fade-up">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">{t.qualEyebrow}</p>
+      <h2 id="certificazioni-azienda" class="section-title">{t.qualTitle}</h2>
+    </div>
+    <a href={`${L}/partners`} class="section-link">{t.qualLink} →</a>
+  </div>
+  <div class="company-cert-grid">
+    {t.certs.map((cert) => (
+      <article>
+        <img src={cert.img} alt={cert.alt} loading="lazy" />
+        <div><h3>{cert.titolo}</h3><p>{cert.testo}</p></div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<CTA lang={lang} title={t.ctaTitle} description={t.ctaDesc} />

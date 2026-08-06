@@ -1,160 +1,212 @@
 ---
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'Servizi', href: '/servizi' },
-  { name: 'Lavori', href: '/lavori' },
-  { name: 'Partners', href: '/partners' },
-  { name: 'Contatti', href: '/contatti' },
-];
+interface Props {
+  lang?: 'it' | 'en';
+}
+
+const { lang = 'it' } = Astro.props;
+
+const navItems =
+  lang === 'en'
+    ? [
+        { name: 'Home', href: '/en/' },
+        { name: 'Company', href: '/en/azienda' },
+        { name: 'Services', href: '/en/servizi' },
+        { name: 'Projects', href: '/en/lavori' },
+        { name: 'Partners', href: '/en/partners' },
+        { name: 'Contact', href: '/en/contatti' },
+      ]
+    : [
+        { name: 'Home', href: '/' },
+        { name: "L'azienda", href: '/azienda' },
+        { name: 'Servizi', href: '/servizi' },
+        { name: 'Lavori', href: '/lavori' },
+        { name: 'Partners', href: '/partners' },
+        { name: 'Contatti', href: '/contatti' },
+      ];
+
+const t =
+  lang === 'en'
+    ? {
+        brandSubtitle: 'Technological systems',
+        menuLabel: 'Open menu',
+        closeLabel: 'Close menu',
+        themeLabel: 'Theme',
+        themes: { light: 'Light', dark: 'Dark', system: 'System' },
+        langIt: 'Italiano',
+        langEn: 'English',
+      }
+    : {
+        brandSubtitle: 'Soluzioni impiantistiche',
+        menuLabel: 'Apri il menu',
+        closeLabel: 'Chiudi menu',
+        themeLabel: 'Tema',
+        themes: { light: 'Chiaro', dark: 'Scuro', system: 'Sistema' },
+        langIt: 'Italiano',
+        langEn: 'English',
+      };
 
 const currentPath = Astro.url.pathname;
+const itPath = currentPath.startsWith('/en/') ? '/' + currentPath.slice(4) : currentPath;
+const itHref = itPath === '' ? '/' : itPath;
+const enHref = '/en' + (itPath === '/' ? '/' : itPath);
 ---
-<header class="pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center px-4">
+<header class="pointer-events-none fixed inset-x-0 top-4 z-50 flex justify-center px-4 sm:top-6">
   <div class="pointer-events-auto w-full max-w-6xl">
-    <nav class="nav-shell flex items-center justify-between rounded-2xl px-6 py-4 backdrop-blur transition-colors duration-200" data-theme-aware>
-      <a
-        href="/"
-        class="flex items-center gap-3 text-left"
-        title="Mistral Impianti SRL - Servizi di impiantistica industriale"
-      >
-        <span class="flex h-12 w-12 items-center justify-center rounded-full">
-          <img src="/logo.jpg" alt="Mistral Impianti Logo" class="h-12 w-12 rounded-full object-cover" loading="lazy" />
+    <nav class="nav-shell flex items-center justify-between rounded-xl px-4 py-3 sm:px-6 sm:py-3.5" aria-label={lang === 'en' ? 'Main navigation' : 'Navigazione principale'}>
+      <a href={lang === 'en' ? '/en/' : '/'} class="flex items-center gap-3 text-left" title="Mistral Impianti SRL">
+        <span class="relative flex h-11 w-11 items-center justify-center overflow-hidden rounded-lg ring-1 ring-black/5 sm:h-12 sm:w-12">
+          <img src="/logo.jpg" alt="Mistral Impianti Logo" class="h-full w-full object-cover" loading="lazy" />
         </span>
         <span class="hidden sm:flex flex-col leading-tight">
-          <span class="brand-title text-sm uppercase tracking-[0.2em]">Mistral Impianti</span>
-          <span class="brand-subtitle text-base font-semibold">Soluzioni impiantistiche tecnologiche</span>
+          <span class="brand-title text-[0.7rem] font-bold uppercase tracking-[0.18em]">Mistral Impianti</span>
+          <span class="brand-subtitle text-sm font-semibold">{t.brandSubtitle}</span>
         </span>
       </a>
 
       <div class="hidden items-center gap-1 lg:flex">
         {navItems.map((item) => {
-          const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          const isActive = currentPath === item.href || (item.href !== '/' && item.href !== '/en/' && currentPath.startsWith(item.href));
           return (
             <a
               href={item.href}
-              class={`nav-link rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                isActive ? 'is-active' : ''
-              }`}
+              class={`nav-link rounded-lg px-4 py-2 text-sm font-semibold ${isActive ? 'is-active' : ''}`}
               aria-current={isActive ? 'page' : undefined}
             >
               {item.name}
             </a>
           );
         })}
+        <div class="lang-switch ml-2" role="group" aria-label={lang === 'en' ? 'Language' : 'Lingua'}>
+          <a href={itHref} class:list={['lang-flag', lang === 'it' && 'is-active']} hreflang="it" lang="it" title={t.langIt} aria-label={t.langIt} aria-current={lang === 'it' ? 'true' : undefined}>
+            <svg viewBox="0 0 3 2" class="lang-flag-svg" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg>
+          </a>
+          <a href={enHref} class:list={['lang-flag', lang === 'en' && 'is-active']} hreflang="en" lang="en" title={t.langEn} aria-label={t.langEn} aria-current={lang === 'en' ? 'true' : undefined}>
+            <svg viewBox="0 0 60 30" class="lang-flag-svg" aria-hidden="true">
+              <clipPath id="uk-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+              <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6" clip-path="url(#uk-s)"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2" clip-path="url(#uk-s)"/>
+              <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+              <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
       <div class="flex items-center gap-2">
-        <div class="relative">
-          <button
-            id="theme-toggle-btn"
-            class="theme-toggle inline-flex h-10 items-center gap-2 rounded-full px-3 text-sm font-medium"
-            aria-label="Cambia tema"
-          >
-            <svg id="theme-icon" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5"/>
-              <line x1="12" y1="1" x2="12" y2="3"/>
-              <line x1="12" y1="21" x2="12" y2="23"/>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-              <line x1="1" y1="12" x2="3" y2="12"/>
-              <line x1="21" y1="12" x2="23" y2="12"/>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-            </svg>
-            <span id="theme-label" class="hidden text-sm font-medium sm:inline">Light</span>
-          </button>
-          <div
-            id="theme-menu"
-            class="theme-menu nav-panel absolute right-0 top-full z-50 mt-2 hidden w-40 rounded-2xl p-2 shadow-lg"
-          >
-            <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="light" aria-pressed="false">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5"/>
-                <line x1="12" y1="1" x2="12" y2="3"/>
-                <line x1="12" y1="21" x2="12" y2="23"/>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                <line x1="1" y1="12" x2="3" y2="12"/>
-                <line x1="21" y1="12" x2="23" y2="12"/>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-              </svg>
-              Light
-            </button>
-            <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="dark" aria-pressed="false">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-              Dark
-            </button>
-            <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="system" aria-pressed="false">
-              <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                <line x1="8" y1="21" x2="16" y2="21"/>
-                <line x1="12" y1="17" x2="12" y2="21"/>
-              </svg>
-              System
-            </button>
-          </div>
-        </div>
-
         <button
           id="mobile-menu-button"
-          class="nav-icon-button lg:hidden inline-flex h-12 w-12 items-center justify-center rounded-full"
-          aria-label="Apri il menu"
+          class="nav-icon-button mobile-menu-btn inline-flex items-center justify-center lg:hidden"
+          aria-label={t.menuLabel}
           aria-expanded="false"
+          aria-controls="mobile-menu"
+          data-label-open={t.menuLabel}
+          data-label-close={t.closeLabel}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
+          <svg class="mobile-menu-icon-open h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+          </svg>
+          <svg class="mobile-menu-icon-close hidden h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
     </nav>
 
-    <div
-      id="mobile-menu"
-      class="nav-panel mt-4 hidden flex-col gap-2 rounded-2xl p-4 shadow-lg shadow-black/5 backdrop-blur lg:hidden"
-    >
+    <div id="mobile-menu" class="nav-panel mt-3 hidden flex-col gap-1 rounded-xl p-3 lg:hidden" hidden>
       {navItems.map((item) => {
-        const isActive = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+        const isActive = currentPath === item.href || (item.href !== '/' && item.href !== '/en/' && currentPath.startsWith(item.href));
         return (
           <a
             href={item.href}
-            class={`nav-link flex items-center justify-between rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
-              isActive ? 'is-active' : ''
-            }`}
+            class={`nav-link flex items-center justify-between rounded-lg px-4 py-3.5 text-base font-semibold ${isActive ? 'is-active' : ''}`}
             aria-current={isActive ? 'page' : undefined}
           >
             <span>{item.name}</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-4 w-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
+            <svg class="h-4 w-4 opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
             </svg>
           </a>
         );
       })}
+      <div class="mt-2 border-t border-[var(--border-color)] pt-3">
+        <p class="mb-2 px-1 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[var(--text-muted)]">{lang === 'en' ? 'Language' : 'Lingua'}</p>
+        <div class="lang-switch lang-switch-menu" role="group" aria-label={lang === 'en' ? 'Language' : 'Lingua'}>
+          <a href={itHref} class:list={['lang-flag', lang === 'it' && 'is-active']} hreflang="it" lang="it" title={t.langIt} aria-label={t.langIt} aria-current={lang === 'it' ? 'true' : undefined}>
+            <svg viewBox="0 0 3 2" class="lang-flag-svg" aria-hidden="true"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg>
+            <span>{t.langIt}</span>
+          </a>
+          <a href={enHref} class:list={['lang-flag', lang === 'en' && 'is-active']} hreflang="en" lang="en" title={t.langEn} aria-label={t.langEn} aria-current={lang === 'en' ? 'true' : undefined}>
+            <svg viewBox="0 0 60 30" class="lang-flag-svg" aria-hidden="true">
+              <rect width="60" height="30" fill="#012169"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+              <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" stroke-width="2"/>
+              <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+              <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+            </svg>
+            <span>{t.langEn}</span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
 
+<div id="mobile-menu-backdrop" class="mobile-menu-backdrop" hidden aria-hidden="true"></div>
+
+<div class="theme-dock">
+  <div id="theme-menu" class="theme-menu absolute bottom-full right-0 z-50 mb-2 hidden w-40 rounded-xl p-2">
+    <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="light" aria-pressed="false">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      {t.themes.light}
+    </button>
+    <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="dark" aria-pressed="false">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      {t.themes.dark}
+    </button>
+    <button class="theme-option flex w-full items-center gap-3 rounded-xl px-4 py-2 text-sm" data-theme="system" aria-pressed="false">
+      <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      {t.themes.system}
+    </button>
+  </div>
+  <button id="theme-toggle-btn" class="theme-toggle theme-dock-button" aria-label={lang === 'en' ? 'Change theme' : 'Cambia tema'}>
+    <svg id="theme-icon" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+    </svg>
+    <span id="theme-label">{t.themeLabel}</span>
+  </button>
+</div>
+
 <script>
-  // Mobile menu
   const button = document.getElementById('mobile-menu-button');
   const menu = document.getElementById('mobile-menu');
+  const backdrop = document.getElementById('mobile-menu-backdrop');
+  const iconOpen = button?.querySelector('.mobile-menu-icon-open');
+  const iconClose = button?.querySelector('.mobile-menu-icon-close');
 
-  if (button && menu) {
+  function setMenuOpen(open: boolean) {
+    if (!button || !menu || !backdrop) return;
+    menu.classList.toggle('hidden', !open);
+    menu.hidden = !open;
+    backdrop.hidden = !open;
+    backdrop.classList.toggle('is-open', open);
+    button.setAttribute('aria-expanded', open.toString());
+    button.setAttribute('aria-label', open ? button.dataset.labelClose || '' : button.dataset.labelOpen || '');
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+    document.body.classList.toggle('menu-open', open);
+  }
+
+  if (button && menu && backdrop) {
     button.addEventListener('click', () => {
-      const isOpen = menu.classList.toggle('hidden');
-      button.setAttribute('aria-expanded', (!isOpen).toString());
+      setMenuOpen(menu.hidden);
+    });
+    backdrop.addEventListener('click', () => setMenuOpen(false));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setMenuOpen(false);
     });
   }
 
-  // Theme management
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const themeMenu = document.getElementById('theme-menu');
   const themeIcon = document.getElementById('theme-icon');
@@ -164,17 +216,19 @@ const currentPath = Astro.url.pathname;
   const themes = {
     light: {
       icon: `<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`,
-      label: 'Light'
+      label: { it: 'Chiaro', en: 'Light' }
     },
     dark: {
       icon: `<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>`,
-      label: 'Dark'
+      label: { it: 'Scuro', en: 'Dark' }
     },
     system: {
       icon: `<rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>`,
-      label: 'System'
+      label: { it: 'Sistema', en: 'System' }
     }
   };
+
+  const pageLang = document.documentElement.lang === 'en' ? 'en' : 'it';
 
   function getSystemTheme() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
@@ -183,10 +237,10 @@ const currentPath = Astro.url.pathname;
   function applyTheme(theme: string) {
     const actualTheme = theme === 'system' ? getSystemTheme() : theme;
     document.documentElement.setAttribute('data-theme', actualTheme);
-    
+
     if (themeIcon && themeLabel) {
       themeIcon.innerHTML = themes[theme as keyof typeof themes].icon;
-      themeLabel.textContent = themes[theme as keyof typeof themes].label;
+      themeLabel.textContent = themes[theme as keyof typeof themes].label[pageLang as 'it' | 'en'];
     }
 
     themeOptions.forEach((option) => {
@@ -200,24 +254,19 @@ const currentPath = Astro.url.pathname;
     applyTheme(theme);
   }
 
-  // Initialize theme
-  const savedTheme = localStorage.getItem('theme') || 'system';
-  applyTheme(savedTheme);
+  applyTheme(localStorage.getItem('theme') || 'light');
 
-  // Toggle menu
   themeToggleBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
     themeMenu?.classList.toggle('hidden');
   });
 
-  // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!themeToggleBtn?.contains(e.target as Node) && !themeMenu?.contains(e.target as Node)) {
       themeMenu?.classList.add('hidden');
     }
   });
 
-  // Theme options
   themeOptions.forEach(option => {
     option.addEventListener('click', () => {
       const theme = option.getAttribute('data-theme');
@@ -228,10 +277,8 @@ const currentPath = Astro.url.pathname;
     });
   });
 
-  // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme === 'system') {
+    if (localStorage.getItem('theme') === 'system') {
       applyTheme('system');
     }
   });

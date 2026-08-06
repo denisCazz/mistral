@@ -6,14 +6,18 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  lang?: 'it' | 'en';
 }
 
-const { title, description = 'Mistral Impianti SRL - Servizi di impiantistica industriale' } = Astro.props;
+const { title, description = 'Mistral Impianti SRL - Servizi di impiantistica industriale', lang = 'it' } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').toString();
+const itPath = Astro.url.pathname.startsWith('/en/') ? '/' + Astro.url.pathname.slice(4) : Astro.url.pathname;
+const itUrl = new URL(itPath, 'https://mistralimpianti.it').toString();
+const enUrl = new URL('/en' + (itPath === '/' ? '/' : itPath), 'https://mistralimpianti.it').toString();
 ---
 
 <!DOCTYPE html>
-<html lang="it" class="scroll-smooth">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,7 +31,7 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').t
     <script is:inline>
       // Prevent flash of wrong theme
       (function() {
-        const theme = localStorage.getItem('theme') || 'system';
+        const theme = localStorage.getItem('theme') || 'light';
         const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
         const actualTheme = theme === 'system' ? systemTheme : theme;
         document.documentElement.setAttribute('data-theme', actualTheme);
@@ -95,9 +99,13 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').t
 
     <!-- Canonical URL dinamico -->
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="it" href={itUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={itUrl} />
 
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="it_IT" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'it_IT'} />
+    <meta property="og:locale:alternate" content={lang === 'en' ? 'it_IT' : 'en_GB'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
@@ -107,23 +115,19 @@ const canonicalUrl = new URL(Astro.url.pathname, 'https://mistralimpianti.it').t
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/logo.jpg" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#0b1c2c" />
     <script defer src="https://cloud.umami.is/script.js" data-website-id="c06813b1-8c8b-4d84-bcf6-e11a577a39f8"></script>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"></noscript>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
   </head>
   <body class="relative min-h-screen antialiased" itemscope itemtype="https://schema.org/WebPage">
-    <div class="global-background" aria-hidden="true">
-      <span class="global-circle global-circle-1 float-a"></span>
-      <span class="global-circle global-circle-2 float-b"></span>
-      <span class="global-circle global-circle-3 float-c"></span>
-    </div>
+    <div class="global-background" aria-hidden="true"></div>
     <div class="relative z-10 flex min-h-screen flex-col page-shell">
-      <Navbar />
+      <Navbar lang={lang} />
       <main class="flex-grow" itemprop="mainContentOfPage">
         <slot />
       </main>
-      <Footer />
+      <Footer lang={lang} />
     </div>
   </body>
 </html>

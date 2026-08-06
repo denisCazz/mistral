@@ -1,0 +1,56 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  size?: 'default' | 'large';
+  image?: string;
+  imageAlt?: string;
+  imagePosition?: string;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  size = 'default',
+  image,
+  imageAlt = '',
+  imagePosition = 'center',
+} = Astro.props;
+---
+
+<section class:list={['page-hero', image && 'page-hero-with-image']} data-animate="fade-up">
+  <div class="page-hero-bg">
+    {image && (
+      <img
+        class="page-hero-image"
+        src={image}
+        alt={imageAlt}
+        style={`object-position: ${imagePosition}`}
+        loading="eager"
+      />
+    )}
+    {image && <div class="page-hero-image-overlay" aria-hidden="true"></div>}
+    <div class="page-hero-grid"></div>
+    <div class="page-hero-glow page-hero-glow-a"></div>
+    <div class="page-hero-glow page-hero-glow-b"></div>
+  </div>
+  <div class="page-hero-inner">
+    <div class="max-w-3xl space-y-5">
+      <p class="eyebrow eyebrow-light">{eyebrow}</p>
+      <h1 class:list={['page-hero-title', size === 'large' && 'page-hero-title-lg']}>{title}</h1>
+      {description && <p class="page-hero-desc">{description}</p>}
+    </div>
+    {Astro.slots.has('aside') && (
+      <div class="page-hero-aside">
+        <slot name="aside" />
+      </div>
+    )}
+    {Astro.slots.has('default') && (
+      <div class="page-hero-extra">
+        <slot />
+      </div>
+    )}
+  </div>
+</section>

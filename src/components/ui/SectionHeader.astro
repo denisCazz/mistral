@@ -1,0 +1,27 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  href?: string;
+  linkText?: string;
+}
+
+const { eyebrow, title, description, href, linkText } = Astro.props;
+---
+
+<div class="section-header">
+  <div class="max-w-2xl">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h2 class="section-title">{title}</h2>
+    {description && <p class="section-desc">{description}</p>}
+  </div>
+  {href && linkText && (
+    <a href={href} class="section-link group">
+      {linkText}
+      <svg class="h-4 w-4 transition group-hover:translate-x-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </a>
+  )}
+</div>

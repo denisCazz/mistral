@@ -1,0 +1,143 @@
+---
+import PageHero from '../ui/PageHero.astro';
+import SectionHeader from '../ui/SectionHeader.astro';
+import CTA from '../ui/CTA.astro';
+
+interface Props {
+  lang?: 'it' | 'en';
+}
+
+const { lang = 'it' } = Astro.props;
+const en = lang === 'en';
+
+const partners = en
+  ? [
+      { nome: 'SIEMENS', logo: '/siemens.jpg', descrizione: 'Global leader in technology and engineering, providing innovative solutions for industry.' },
+      { nome: 'VANDERBILT', logo: '/vanderbilt.jpg', descrizione: 'Security and access management solutions for a variety of sectors.' },
+      { nome: 'NEDAP', logo: '/nedap.jpg', descrizione: 'Advanced solutions for security and access management.' },
+      { nome: 'IRIS', logo: '/iris.jpg', descrizione: 'IT solutions and services for all industrial sectors.' },
+    ]
+  : [
+      { nome: 'SIEMENS', logo: '/siemens.jpg', descrizione: "Leader globale nella tecnologia e nell'ingegneria, fornendo soluzioni innovative per l'industria." },
+      { nome: 'VANDERBILT', logo: '/vanderbilt.jpg', descrizione: 'Soluzioni di sicurezza e gestione degli accessi per una varietà di settori.' },
+      { nome: 'NEDAP', logo: '/nedap.jpg', descrizione: 'Soluzioni avanzate per la gestione della sicurezza e dell’accesso.' },
+      { nome: 'IRIS', logo: '/iris.jpg', descrizione: 'Soluzioni e servizi IT per tutti i settori industriali.' },
+    ];
+
+const certificazioni = en
+  ? [
+      { nome: 'ISO 9001', logo: '/iso.png', descrizione: 'Quality certification for management systems.', documento: '/pdf/intercert_v2.pdf' },
+      { nome: 'F-GAS', logo: '/fgas.png', descrizione: 'Certification for the management of fluorinated gases.' },
+    ]
+  : [
+      { nome: 'ISO 9001', logo: '/iso.png', descrizione: 'Certificazione di qualità per i sistemi di gestione.', documento: '/pdf/intercert_v2.pdf' },
+      { nome: 'F-GAS', logo: '/fgas.png', descrizione: 'Certificazione per la gestione dei gas fluorurati.' },
+    ];
+
+const t = en
+  ? {
+      heroEyebrow: 'Partnerships',
+      heroTitle: 'Collaborations with technology leaders.',
+      heroDesc: 'Mistral Impianti works with international companies to integrate advanced systems and deliver reliable, scalable solutions.',
+      heroImageAlt: 'Professional electrical system wiring',
+      asideTitle: 'Careful selection',
+      asideText: 'Every partnership is chosen for quality, continuity of support and compatibility with the required standards.',
+      networkEyebrow: 'Network',
+      networkTitle: 'Our partners',
+      networkDesc: 'We collaborate with manufacturers and suppliers contributing to complex projects in the industrial, healthcare and retail sectors.',
+      qualityEyebrow: 'Quality',
+      qualityTitle: 'Certifications',
+      qualityDesc: 'Our certifications attest to our constant commitment to quality, safety and regulatory compliance.',
+      downloadIso: 'Download ISO 9001',
+      downloadCert: 'Download certificate',
+      viewOnline: 'View online',
+      ctaTitle: 'Want to integrate certified solutions into your system?',
+      ctaDesc: 'Let’s discuss how our partnerships can support your next project.',
+    }
+  : {
+      heroEyebrow: 'Partnership',
+      heroTitle: 'Collaborazioni con leader tecnologici.',
+      heroDesc: 'Mistral Impianti collabora con aziende internazionali per integrare sistemi avanzati e garantire soluzioni affidabili e scalabili.',
+      heroImageAlt: 'Cablaggio di un impianto elettrico professionale',
+      asideTitle: 'Selezione accurata',
+      asideText: 'Ogni partnership è scelta per qualità, continuità di supporto e compatibilità con gli standard richiesti.',
+      networkEyebrow: 'Network',
+      networkTitle: 'I nostri partners',
+      networkDesc: 'Collaboriamo con produttori e fornitori che contribuiscono a progetti complessi in ambito industriale, sanitario e retail.',
+      qualityEyebrow: 'Qualità',
+      qualityTitle: 'Certificazioni',
+      qualityDesc: "Le nostre certificazioni attestano il costante impegno per la qualità, la sicurezza e l'aggiornamento normativo.",
+      downloadIso: 'Scarica ISO 9001',
+      downloadCert: 'Scarica certificato',
+      viewOnline: 'Visualizza online',
+      ctaTitle: 'Vuoi integrare soluzioni certificate nel tuo impianto?',
+      ctaDesc: 'Parliamo di come le nostre partnership possono supportare il tuo prossimo progetto.',
+    };
+---
+
+<PageHero
+  eyebrow={t.heroEyebrow}
+  title={t.heroTitle}
+  description={t.heroDesc}
+  image="https://images.unsplash.com/photo-1635335874521-7987db781153?auto=format&fit=crop&w=1800&q=82"
+  imageAlt={t.heroImageAlt}
+  imagePosition="center 42%"
+>
+  <div slot="aside" class="hero-aside-card">
+    <p class="hero-aside-title">{t.asideTitle}</p>
+    <p class="mt-3">{t.asideText}</p>
+  </div>
+</PageHero>
+
+<section class="section-shell mt-16 pb-8" aria-labelledby="partners-title" data-animate="fade-up">
+  <SectionHeader
+    eyebrow={t.networkEyebrow}
+    title={t.networkTitle}
+    description={t.networkDesc}
+  />
+  <div class="grid gap-6 md:grid-cols-2">
+    {partners.map((partner) => (
+      <article class="feature-card group" aria-label={partner.nome}>
+        <div class="flex h-20 w-20 items-center justify-center rounded-xl border border-black/8 bg-zinc-50 p-4 transition group-hover:scale-105">
+          <img src={partner.logo} alt={`Logo ${partner.nome}`} class="h-full w-full object-contain" loading="lazy" />
+        </div>
+        <h3 class="mt-6 text-2xl font-bold tracking-tight">{partner.nome}</h3>
+        <p class="mt-3 text-sm leading-relaxed text-zinc-600">{partner.descrizione}</p>
+      </article>
+    ))}
+  </div>
+</section>
+
+<section class="section-shell pb-24" aria-labelledby="certificazioni-title" data-animate="fade-up">
+  <div class="section-header">
+    <div class="max-w-2xl">
+      <p class="eyebrow">{t.qualityEyebrow}</p>
+      <h2 id="certificazioni-title" class="section-title">{t.qualityTitle}</h2>
+      <p class="section-desc">{t.qualityDesc}</p>
+    </div>
+    <a href="/pdf/intercert_v2.pdf" download class="btn btn-outline shrink-0" title={t.downloadIso}>{t.downloadIso}</a>
+  </div>
+  <div class="grid gap-6 md:grid-cols-2">
+    {certificazioni.map((cert) => (
+      <article class="dark-card" aria-label={cert.nome}>
+        <div class="relative flex h-20 w-20 items-center justify-center rounded-xl border border-white/10 bg-white/5 p-4">
+          <img src={cert.logo} alt={`Logo ${cert.nome}`} class="h-full w-full object-contain" loading="lazy" />
+        </div>
+        <h3 class="relative mt-6 text-2xl font-bold">{cert.nome}</h3>
+        <p class="relative mt-3 text-sm leading-relaxed text-white/60">{cert.descrizione}</p>
+        {cert.documento && (
+          <div class="relative mt-6 flex flex-wrap gap-3">
+            <a href={cert.documento} download class="btn btn-primary text-xs" aria-label={`${t.downloadCert} ${cert.nome}`}>
+              {t.downloadCert}
+            </a>
+            <a href={cert.documento} target="_blank" rel="noopener" class="btn btn-secondary text-xs">
+              {t.viewOnline}
+            </a>
+          </div>
+        )}
+      </article>
+    ))}
+  </div>
+</section>
+
+<CTA lang={lang} title={t.ctaTitle} description={t.ctaDesc} />
