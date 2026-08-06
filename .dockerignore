@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.github
+.astro
+.cursor
+.DS_Store
+*.md
+.env
+.env.*
+!.env.example
+agent-transcripts
+terminals
