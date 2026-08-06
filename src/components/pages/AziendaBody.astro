@@ -9,10 +9,10 @@ const { lang = 'it' } = Astro.props;
 const en = lang === 'en';
 const L = en ? '/en' : '';
 
-const bilanci = [
-  { anno: '2025', fatturato: '€ 2.735.399', utile: '€ 781.341', crescita: '+24,5%' },
-  { anno: '2024', fatturato: '€ 2.196.706', utile: '€ 664.901', crescita: '+15,6%' },
-  { anno: '2023', fatturato: en ? 'approx. € 1.9M' : 'circa € 1,9M', utile: '€ 517.100', crescita: '—' },
+const growthSeries = [
+  { year: '2023', value: en ? '€ 1.9M' : '€ 1,9M', height: 69 },
+  { year: '2024', value: '€ 2,20M', height: 80 },
+  { year: '2025', value: '€ 2,74M', height: 100 },
 ];
 
 const t = en
@@ -28,13 +28,13 @@ const t = en
         'Its registered and operational head office is at <strong>Via del Lavoro 17, Cherasco (CN)</strong>. Today the team counts <strong>21 people</strong>, including specialised technicians, programmers and installers.',
         'The twenty-year collaboration as a <strong>Siemens technical partner</strong> and the <strong>ISO 9001</strong> certification demonstrate continuity, quality and the ability to work on complex contracts.',
       ],
-      solidEyebrow: 'Solidity',
-      solidTitle: 'Growing numbers.',
-      solidDesc: 'Economic performance over the last three financial years.',
-      lastYear: 'Latest financial year',
-      revenue: 'Revenue',
-      profit: 'Profit',
-      growth: 'Growth',
+      solidEyebrow: 'Growth',
+      solidTitle: 'Three years, one clear direction.',
+      solidDesc: 'Revenue growth over the last three financial years, supported by investment in people and skills.',
+      chartEyebrow: 'Revenue',
+      chartTitle: 'Annual revenue',
+      chartGrowth: '+44%',
+      chartAria: 'Revenue: 1.9 million in 2023, 2.20 million in 2024, 2.74 million in 2025',
       dataNote: 'Financial data provided by the company. 2023 figures are indicative.',
       evoEyebrow: 'Our evolution',
       evoTitle: 'Experience that becomes method.',
@@ -66,13 +66,13 @@ const t = en
         'La sede legale e operativa è in <strong>Via del Lavoro 17, Cherasco (CN)</strong>. Oggi il team conta <strong>21 persone</strong> tra tecnici specializzati, programmatori e installatori.',
         'La collaborazione ventennale come <strong>technical partner Siemens</strong> e la certificazione <strong>ISO 9001</strong> testimoniano continuità, qualità e capacità di lavorare su commesse complesse.',
       ],
-      solidEyebrow: 'Solidità',
-      solidTitle: 'Numeri in crescita.',
-      solidDesc: 'Andamento economico degli ultimi tre esercizi.',
-      lastYear: 'Ultimo esercizio',
-      revenue: 'Fatturato',
-      profit: 'Utile',
-      growth: 'Crescita',
+      solidEyebrow: 'Crescita',
+      solidTitle: 'Tre anni, una direzione chiara.',
+      solidDesc: 'Andamento del fatturato negli ultimi tre esercizi, sostenuto da investimenti nelle persone e nelle competenze.',
+      chartEyebrow: 'Fatturato',
+      chartTitle: 'Ricavi annuali',
+      chartGrowth: '+44%',
+      chartAria: 'Fatturato: 1,9 milioni nel 2023, 2,20 milioni nel 2024, 2,74 milioni nel 2025',
       dataNote: 'Dati economici forniti dal committente. Valori 2023 indicativi.',
       evoEyebrow: 'La nostra evoluzione',
       evoTitle: 'Esperienza che diventa metodo.',
@@ -128,28 +128,25 @@ const t = en
       <p class="section-desc">{t.solidDesc}</p>
     </div>
   </div>
-  <div class="financial-grid">
-    {bilanci.map((bilancio, index) => (
-      <article class:list={['financial-card', index === 0 && 'is-current']}>
-        <div class="financial-year">
-          <span>{bilancio.anno}</span>
-          {index === 0 && <small>{t.lastYear}</small>}
+  <article class="business-chart" aria-labelledby="revenue-chart-title">
+    <div class="chart-heading">
+      <div>
+        <p class="eyebrow">{t.chartEyebrow}</p>
+        <h3 id="revenue-chart-title">{t.chartTitle}</h3>
+      </div>
+      <span class="chart-growth">{t.chartGrowth}</span>
+    </div>
+    <div class="bar-chart" role="img" aria-label={t.chartAria}>
+      <div class="chart-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      {growthSeries.map((item) => (
+        <div class="chart-column">
+          <span class="chart-value">{item.value}</span>
+          <div class="chart-bar revenue-bar" style={`height: ${item.height * 2}px`}></div>
+          <span class="chart-year">{item.year}</span>
         </div>
-        <div>
-          <span class="financial-label">{t.revenue}</span>
-          <strong>{bilancio.fatturato}</strong>
-        </div>
-        <div>
-          <span class="financial-label">{t.profit}</span>
-          <strong>{bilancio.utile}</strong>
-        </div>
-        <div class="financial-growth">
-          <span class="financial-label">{t.growth}</span>
-          <strong>{bilancio.crescita}</strong>
-        </div>
-      </article>
-    ))}
-  </div>
+      ))}
+    </div>
+  </article>
   <p class="data-note">{t.dataNote}</p>
 </section>
 

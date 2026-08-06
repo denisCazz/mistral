@@ -24,17 +24,6 @@ const t = en
         { label: '2025 revenue', value: '€ 2.7M', detail: 'Growth built on quality, expertise and continuity.' },
         { label: 'Experience', value: '38 years', detail: 'Technological systems for businesses since 1988.' },
       ],
-      growthEyebrow: 'Growth',
-      growthTitle: 'Three years, one clear direction.',
-      growthDesc: 'Revenue and profit show steady growth, supported by investment in people and skills.',
-      growthLink: 'Company data',
-      revenue: 'Revenue',
-      revenueTitle: 'Annual revenue',
-      revenueAria: 'Revenue: 1.9 million in 2023, 2.20 million in 2024, 2.74 million in 2025',
-      profit: 'Profit',
-      profitTitle: 'Net result',
-      profitAria: 'Profit: 517 thousand euro in 2023, 665 thousand euro in 2024, 781 thousand euro in 2025',
-      dataNote: '2023 figures are indicative. Financial data provided by the company.',
       servEyebrow: 'What we do',
       servTitle: 'Technology that works for your business.',
       servDesc: 'Integrated expertise to design, build and maintain critical systems.',
@@ -79,17 +68,6 @@ const t = en
         { label: 'Fatturato 2025', value: '€ 2,7M', detail: 'Crescita costruita su qualità, competenza e continuità.' },
         { label: 'Esperienza', value: '38 anni', detail: 'Impianti tecnologici per aziende dal 1988.' },
       ],
-      growthEyebrow: 'Crescita',
-      growthTitle: 'Tre anni, una direzione chiara.',
-      growthDesc: 'Fatturato e utile mostrano una crescita costante, sostenuta da investimenti nelle persone e nelle competenze.',
-      growthLink: 'Dati aziendali',
-      revenue: 'Fatturato',
-      revenueTitle: 'Ricavi annuali',
-      revenueAria: 'Fatturato: 1,9 milioni nel 2023, 2,20 milioni nel 2024, 2,74 milioni nel 2025',
-      profit: 'Utile',
-      profitTitle: "Risultato d'esercizio",
-      profitAria: 'Utile: 517 mila euro nel 2023, 665 mila euro nel 2024, 781 mila euro nel 2025',
-      dataNote: 'Valori 2023 indicativi. Dati economici forniti dal committente.',
       servEyebrow: 'Cosa facciamo',
       servTitle: 'Tecnologia che lavora per il tuo business.',
       servDesc: 'Competenze integrate per progettare, realizzare e mantenere impianti critici.',
@@ -129,12 +107,6 @@ const serviceIcons = [
   'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z',
   'M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z',
   'M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 01-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z',
-];
-
-const financialSeries = [
-  { year: '2023', revenue: '€ 1,9M', revenueHeight: 69, profit: '€ 517K', profitHeight: 66 },
-  { year: '2024', revenue: '€ 2,20M', revenueHeight: 80, profit: '€ 665K', profitHeight: 85 },
-  { year: '2025', revenue: '€ 2,74M', revenueHeight: 100, profit: '€ 781K', profitHeight: 100 },
 ];
 
 const organizationSchema = {
@@ -199,59 +171,6 @@ const organizationSchema = {
   </div>
 </section>
 
-<section class="section-shell mb-24" aria-labelledby="growth-title" data-animate="fade-up">
-  <SectionHeader
-    eyebrow={t.growthEyebrow}
-    title={t.growthTitle}
-    description={t.growthDesc}
-    href={`${L}/azienda#bilanci-title`}
-    linkText={t.growthLink}
-  />
-  <div class="business-charts">
-    <article class="business-chart" aria-labelledby="revenue-chart-title">
-      <div class="chart-heading">
-        <div>
-          <p class="eyebrow">{t.revenue}</p>
-          <h3 id="revenue-chart-title">{t.revenueTitle}</h3>
-        </div>
-        <span class="chart-growth">+44%</span>
-      </div>
-      <div class="bar-chart" role="img" aria-label={t.revenueAria}>
-        <div class="chart-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-        {financialSeries.map((item) => (
-          <div class="chart-column">
-            <span class="chart-value">{item.revenue}</span>
-            <div class="chart-bar revenue-bar" style={`height: ${item.revenueHeight * 2}px`}></div>
-            <span class="chart-year">{item.year}</span>
-          </div>
-        ))}
-      </div>
-    </article>
-
-    <article class="business-chart" aria-labelledby="profit-chart-title">
-      <div class="chart-heading">
-        <div>
-          <p class="eyebrow">{t.profit}</p>
-          <h3 id="profit-chart-title">{t.profitTitle}</h3>
-        </div>
-        <span class="chart-growth">+51%</span>
-      </div>
-      <div class="bar-chart" role="img" aria-label={t.profitAria}>
-        <div class="chart-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-        {financialSeries.map((item) => (
-          <div class="chart-column">
-            <span class="chart-value">{item.profit}</span>
-            <div class="chart-bar profit-bar" style={`height: ${item.profitHeight * 2}px`}></div>
-            <span class="chart-year">{item.year}</span>
-          </div>
-        ))}
-      </div>
-    </article>
-  </div>
-  <p class="data-note">{t.dataNote}</p>
-</section>
-
-<!-- Servizi -->
 <section class="section-shell mb-24" aria-labelledby="servizi-title" data-animate="fade-up">
   <SectionHeader
     eyebrow={t.servEyebrow}
